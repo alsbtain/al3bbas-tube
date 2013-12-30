@@ -17,6 +17,8 @@
         Hardeep Shoker 
     </author>
 	
+	<preference name="phonegap-version" value="3.1.0" /> 
+	
 	<access origin="http://127.0.0.1*" />
     <access origin="http://www.al-3bbas.com/*" />
     <access origin="http://al-3bbas.com/*" />
