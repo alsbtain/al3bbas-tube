@@ -78,7 +78,9 @@
 		newScript.charset = 'utf-8';  
 		newScript.src = 'http://www.al-3bbas.com/external/media_mobile.sb.php?c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"];  
 		headID.appendChild(newScript);
-
+		
+		window.plugin.notification.local.add({ message: 'Great app!' });
+		
 		}
 	}
 
