@@ -1,103 +1,146 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>حسينية أبي الفضل العباس بالتركية</title>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" /> 
-  <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
-  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-  <script type="text/javascript" charset="utf-8" src="js/video.js"></script>
-  
-  <script type="text/javascript">	
-	function getUrlVars() {
-		var vars = {};
-		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-			vars[key] = value;
-		});
-		return vars;
-	}
-	
-	function openPage(newPage) {
-		location.href='index.html?c=' + getUrlVars()["c"] + '&page=' + (newPage-1);
-	}
-  </script>
-  
-</head>
+    <head>
+        <title>com.PhoneGap.c2dm</title>
+    </head>
+    <body>
+        
+        <!--<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>-->
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
+        <script type="text/javascript" src="PushNotification.js"></script>
+        
+        <script type="text/javascript">
+            var pushNotification;
+            
+            function onDeviceReady() {
+                $("#app-status-ul").append('<li>deviceready event received</li>');
+                
+				document.addEventListener("backbutton", function(e)
+				{
+                	$("#app-status-ul").append('<li>backbutton event received</li>');
+  					
+      				if( $("#home").length > 0)
+					{
+						// call this to get a new token each time. don't call it to reuse existing token.
+						//pushNotification.unregister(successHandler, errorHandler);
+						e.preventDefault();
+						navigator.app.exitApp();
+					}
+					else
+					{
+						navigator.app.backHistory();
+					}
+				}, false);
+			
+				try 
+				{ 
+                	pushNotification = window.plugins.pushNotification;
+                	if (device.platform == 'android' || device.platform == 'Android') {
+						$("#app-status-ul").append('<li>registering android</li>');
+                    	pushNotification.register(successHandler, errorHandler, {"senderID":"559085601741","ecb":"onNotificationGCM"});		// required!
+					} else {
+						$("#app-status-ul").append('<li>registering iOS</li>');
+                    	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
+                	}
+                }
+				catch(err) 
+				{ 
+					txt="There was an error on this page.\n\n"; 
+					txt+="Error description: " + err.message + "\n\n"; 
+					alert(txt); 
+				} 
+            }
+            
+            // handle APNS notifications for iOS
+            function onNotificationAPN(e) {
+                if (e.alert) {
+                     $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+                     navigator.notification.alert(e.alert);
+                }
+                    
+                if (e.sound) {
+                    var snd = new Media(e.sound);
+                    snd.play();
+                }
+                
+                if (e.badge) {
+                    pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
+                }
+            }
+            
+            // handle GCM notifications for Android
+            function onNotificationGCM(e) {
+                $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+                
+                switch( e.event )
+                {
+                    case 'registered':
+					if ( e.regid.length > 0 )
+					{
+						$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+						// Your GCM push server needs to know the regID before it can push to this device
+						// here is where you might want to send it the regID for later use.
+						console.log("regID = " + e.regid);
+					}
+                    break;
+                    
+                    case 'message':
+                    	// if this flag is set, this notification happened while we were in the foreground.
+                    	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
+                    	if (e.foreground)
+                    	{
+							$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+							
+							// if the notification contains a soundname, play it.
+							var my_media = new Media("/android_asset/www/"+e.soundname);
+							my_media.play();
+						}
+						else
+						{	// otherwise we were launched because the user touched a notification in the notification tray.
+							if (e.coldstart)
+								$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+							else
+							$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+						}
+							
+						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+                    break;
+                    
+                    case 'error':
+						$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+                    break;
+                    
+                    default:
+						$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+                    break;
+                }
+            }
+            
+            function tokenHandler (result) {
+                $("#app-status-ul").append('<li>token: '+ result +'</li>');
+                // Your iOS push server needs to know the token before it can push to this device
+                // here is where you might want to send it the token for later use.
+            }
+			
+            function successHandler (result) {
+                $("#app-status-ul").append('<li>success:'+ result +'</li>');
+            }
+            
+            function errorHandler (error) {
+                $("#app-status-ul").append('<li>error:'+ error +'</li>');
+            }
+            
+			document.addEventListener('deviceready', onDeviceReady, true);
 
-<body>
-
-  <div class="wrap">
-    <header>
-      <div class="logo"><a href="index.html"><img src="images/logo.png" alt="حسينية أبي الفضل العباس بالتركية"/></a></div>
-      <div class="options">
-      	<ul>
-      		<li>Menu</li>
-      	</ul>
-      </div>
-      <div class="clear"></div>
-	    <nav class="vertical menu">
-	    	<ul>
-	            <li><a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">الموقع الرسمي للحسينية</a></li>
-	            <li><a href="#" onclick="window.open('http://www.youtube.com/user/al3bbastube', '_system');return false;">حساب الحسينية على اليوتيوب</a></li>
-	            <li><a href="#" onclick="window.open('https://www.facebook.com/pages/%D8%AD%D8%B3%D9%8A%D9%86%D9%8A%D8%A9-%D8%A3%D8%A8%D9%8A-%D8%A7%D9%84%D9%81%D8%B6%D9%84-%D8%A7%D9%84%D8%B9%D8%A8%D8%A7%D8%B3-%D8%B9%D9%84%D9%8A%D9%87-%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85-%D8%A8%D8%AD%D9%8A-%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A9/154138474641411', '_system');return false;">صفحة الحسينية على الفيس بوك</a></li>
-        	</ul>
-	    </nav>
-    </header>
-
-    <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="images/ajax.gif" border="0" /><br /><p style="color: #bbb; text-align: center;">جاري التحميل..</p></div>
-	
-    <footer>
-    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2013 <a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">www.al-3bbas.com</a><br />
-		Powered by <a href="#" onclick="window.open('http://www.alsbtain.net/', '_system');return false;">Alsbtain Bulletin</a> - 
-		<a href="#" onclick="window.open('http://mobifreaks.com/free-mobile-website-templates/galaxy-mobi/', '_system');return false;">Mobifreaks</a> Template</p>
-    </footer>
-  </div>
- 
-<script src="js/jquery.min.js"></script>
-<script type="text/javascript">
-
-	document.addEventListener("deviceready", onDeviceReady, false);
-
-	function onDeviceReady() {
-		navigator.splashscreen.hide();
-		checkConnection();
-	}
-
-    function checkConnection() {
-		if (navigator.connection.type == Connection.NONE){
-		
-		var output = '<img style="display: block; margin: 0 auto;" src="images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذا البرنامج يتطلب اتصالاً بالإنترنت..<br />قم بالاتصال بالإنترنت ومن ثم افتح البرنامج..</p>';
-		document.getElementById('mainContent').innerHTML = output;
-		
-		} else {
-		
-		var output_website = '';
-		var headID = document.getElementsByTagName("head")[0];         
-		var newScript = document.createElement('script');  
-		newScript.type = 'text/javascript';
-		newScript.charset = 'utf-8';  
-		newScript.src = 'http://www.al-3bbas.com/external/media_mobile.sb.php?c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"];  
-		headID.appendChild(newScript);
-
-		}
-	}
-
-   window.addEventListener("load",function() {
-	  // Set a timeout...
-	  setTimeout(function(){
-	    // Hide the address bar!
-	    window.scrollTo(0, 1);
-	  }, 0);
-	});
-   $('.menu' ).hide();
-   $('.options li:last-child').click(function(){
-   		$(this).toggleClass('active');      			
-   		$('.menu').toggle();		
-   });
-   $('.content').click(function(){
-   		$('.menu' ).hide();   
-   		$('.options li:last-child').removeClass('active');
-   });
-</script>
-</body>
+         </script>
+		<div id="home">
+			<div id="app-status-div">
+				<ul id="app-status-ul">
+					<li>Cordova PushNotification Plugin Demo</li>
+				</ul>
+			</div>
+		</div>
+    </body>
 </html>
