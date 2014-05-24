@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>استماع مقطع | حسينية أبي الفضل العباس بالتركية</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" /> 
+  <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
+  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+  
+  <script type="text/javascript">	
+	function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+	}
+  </script>
+  
+</head>
+
+<body>
+
+  <div class="wrap">
+    <header>
+      <div class="logo"><a href="index.html"><img src="images/logo.png" alt="حسينية أبي الفضل العباس بالتركية"/></a></div>
+      <div class="options">
+      	<ul>
+      		<li>Menu</li>
+      	</ul>
+      </div>
+      <div class="clear"></div>
+	    <nav class="vertical menu">
+	    	<ul>
+	            <li><a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">الموقع الرسمي للحسينية</a></li>
+	            <li><a href="#" onclick="window.open('http://www.youtube.com/user/al3bbastube', '_system');return false;">حساب الحسينية على اليوتيوب</a></li>
+	            <li><a href="#" onclick="window.open('https://www.facebook.com/pages/%D8%AD%D8%B3%D9%8A%D9%86%D9%8A%D8%A9-%D8%A3%D8%A8%D9%8A-%D8%A7%D9%84%D9%81%D8%B6%D9%84-%D8%A7%D9%84%D8%B9%D8%A8%D8%A7%D8%B3-%D8%B9%D9%84%D9%8A%D9%87-%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85-%D8%A8%D8%AD%D9%8A-%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A9/154138474641411', '_system');return false;">صفحة الحسينية على الفيس بوك</a></li>
+        	</ul>
+	    </nav>
+    </header>
+      
+    <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="images/ajax.gif" border="0" /><br /><p style="color: #bbb; text-align: center;">جاري التحميل..</p></div>
+    
+	<footer>
+    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2014 <a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">www.al-3bbas.com</a><br />
+		Powered by <a href="#" onclick="window.open('http://www.alsbtain.net/', '_system');return false;">Alsbtain Bulletin</a> - 
+		<a href="#" onclick="window.open('http://mobifreaks.com/free-mobile-website-templates/galaxy-mobi/', '_system');return false;">Mobifreaks</a> Template</p>
+    </footer>
+  </div>
+ 
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+	
+	function onDeviceReady() {
+		checkConnection();
+	}
+
+    function checkConnection() {
+		if (navigator.connection.type == Connection.NONE){
+		
+		var output = '<img style="display: block; margin: 0 auto;" src="images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذا البرنامج يتطلب اتصالاً بالإنترنت..<br />قم بالاتصال بالإنترنت ومن ثم افتح البرنامج..</p>';
+		document.getElementById('mainContent').innerHTML = output;
+		
+		} else {
+		
+		var headID = document.getElementsByTagName("head")[0];         
+		var newScript = document.createElement('script');  
+		newScript.type = 'text/javascript';
+		newScript.charset = 'utf-8';  
+		newScript.src = 'http://www.al-3bbas.com/external/media_mobile.sb.php?ytID=' + getUrlVars()["ytID"] + '&ytC=' + getUrlVars()["ytC"];  
+		headID.appendChild(newScript);  
+		
+		}		
+	}
+	
+   window.addEventListener("load",function() {
+	  // Set a timeout...
+	  setTimeout(function(){
+	    // Hide the address bar!
+	    window.scrollTo(0, 1);
+	  }, 0);
+	});
+   $('.menu' ).hide();
+   $('.options li:last-child').click(function(){
+   		$(this).toggleClass('active');      			
+   		$('.menu').toggle();		
+   });
+   $('.content').click(function(){
+   		$('.menu' ).hide();   
+   		$('.options li:last-child').removeClass('active');
+   });
+</script>
+</body>
+</html>
