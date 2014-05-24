@@ -59,8 +59,6 @@
 
 	var pushNotification;
 
-	document.addEventListener("deviceready", onDeviceReady, false);
-
 	function onDeviceReady() {
 		navigator.splashscreen.hide();
 		checkConnection();
@@ -218,6 +216,8 @@
             }
 			
 	// End of Push Notifications
+	
+	document.addEventListener("deviceready", onDeviceReady, true);
 
    window.addEventListener("load",function() {
 	  // Set a timeout...
