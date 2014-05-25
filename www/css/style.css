@@ -446,3 +446,20 @@ h1 img, h2 img{
 	border: 0;
 	background-color: transparent;
 }
+
+#ads{
+padding: 0px 5px;
+background: none repeat scroll 0% 0% #FFE04D;
+color: #333;
+border-radius: 0.3em;
+width: 90%;
+margin-left: auto;
+margin-right: auto;
+line-height: 24px;
+margin-bottom: 6px;
+font-weight: bold;
+}
+
+#ads a:link, #ads a:visited, #ads a:hover, #ads a:active{
+color: #ff0000;
+}

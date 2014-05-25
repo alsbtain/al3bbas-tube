@@ -7,6 +7,7 @@
   <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
   <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
   <script type="text/javascript" src="jwplayer/jwplayer.js"></script>
+  <script type="text/javascript" src="js/PushNotification.js"></script>
   
   <script type="text/javascript">	
 	function getUrlVars() {
@@ -52,7 +53,7 @@
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 
-	document.addEventListener("deviceready", onDeviceReady, false);
+	var pushNotification;
 	
 	function onDeviceReady() {
 		checkConnection();
@@ -66,15 +67,29 @@
 		
 		} else {
 		
+		// Push Notifications DeviceReady
+		
+		$.getScript("js/push_deviceReady.js", function(){});
+		
+		// End of Push Notifications DeviceReady
+		
 		var headID = document.getElementsByTagName("head")[0];         
 		var newScript = document.createElement('script');  
 		newScript.type = 'text/javascript';
 		newScript.charset = 'utf-8';  
-		newScript.src = 'http://www.al-3bbas.com/external/media_mobile.sb.php?id=' + getUrlVars()["id"];  
+		newScript.src = 'http://www.al-3bbas.com/external/media_mobile11.sb.php?id=' + getUrlVars()["id"];  
 		headID.appendChild(newScript);  
 		
 		}		
 	}
+	
+	// Push Notifications Functions
+	
+	$.getScript("js/push_functions.js", function(){});
+
+	// End of Push Notifications Functions
+	
+	document.addEventListener("deviceready", onDeviceReady, true);
 	
    window.addEventListener("load",function() {
 	  // Set a timeout...
