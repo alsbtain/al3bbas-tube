@@ -1,19 +1,3 @@
-document.addEventListener("backbutton", function(e)
-{  					
-	if( (!(getUrlVars()['c']>0))&&(!(getUrlVars()['page']>0)) )
-	{
-		// call this to get a new token each time. don't call it to reuse existing token.
-		//pushNotification.unregister(successHandler, errorHandler);
-		e.preventDefault();
-		navigator.app.exitApp();
-	}
-	else
-	{
-		navigator.app.backHistory();
-	}
-}, false);
-
-
 //if( (!(getUrlVars()['c']>0))&&(!(getUrlVars()['page']>0)) )
 //{
 
