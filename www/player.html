@@ -129,8 +129,8 @@ var path = fileEntry.toURL().replace('dummy.html', '');
 var fileTransfer = new FileTransfer();
 fileEntry.remove();
 fileTransfer.download(
-'http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf',
-path + 'Download/theFile.pdf',
+sbURL,
+path + 'Download/' + sbFilename,
 function(file) {
 //showLink(file.toURI());
 },
