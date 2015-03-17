@@ -125,6 +125,7 @@ fail
 );
 }
 function onGetFileSuccess(fileEntry) {
+document.getElementById('downloadMSG').innerHTML = 'جاري التحميل...';
 var path = fileEntry.toURL().replace('dummy.html', '');
 var fileTransfer = new FileTransfer();
 fileEntry.remove();
@@ -132,28 +133,15 @@ fileTransfer.download(
 sbURL,
 path + 'Download/' + sbFilename,
 function(file) {
-//showLink(file.toURI());
+document.getElementById('downloadMSG').innerHTML = 'تم التحميل!';
 },
 function(error) {
-
-// ERROR
-
+document.getElementById('downloadMSG').innerHTML = 'حدث خطأ أثناء التحميل!';
 }
 );
 }
-function showLink(url) {
-alert(url);
-var divEl = document.getElementById('deviceready');
-var aElem = document.createElement('a');
-aElem.setAttribute('target', '_blank');
-aElem.setAttribute('href', url);
-aElem.appendChild(document.createTextNode('Ready! Click To Open.'))
-divEl.appendChild(aElem);
-}
 function fail(evt) {
-
-// ERROR
-
+document.getElementById('downloadMSG').innerHTML = 'حدث خطأ أثناء التحميل!';
 } 
    
 </script>
