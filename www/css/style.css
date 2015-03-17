@@ -45,7 +45,7 @@ article.underline{
 	margin-bottom:0;
 }
 .underline:last-child{border-bottom:none;}
-article img{
+article img:not(.noborder){
 	margin:10px 0;
 	padding:5px;
 	border:1px solid #555;

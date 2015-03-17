@@ -125,7 +125,7 @@ fail
 );
 }
 function onGetFileSuccess(fileEntry) {
-document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/loading.gif" /> جاري التحميل...';
+document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/loading.gif" /> جاري التحميل...';
 var path = fileEntry.toURL().replace('dummy.html', '');
 var fileTransfer = new FileTransfer();
 fileEntry.remove();
@@ -133,15 +133,15 @@ fileTransfer.download(
 sbURL,
 path + 'Download/' + sbFilename,
 function(file) {
-document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/tick.png" /> تم التحميل!';
+document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل!';
 },
 function(error) {
-document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
+document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
 }
 );
 }
 function fail(evt) {
-document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
+document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
 } 
    
 </script>
