@@ -45,12 +45,20 @@ article.underline{
 	margin-bottom:0;
 }
 .underline:last-child{border-bottom:none;}
-article img:not(.noborder){
+article img{
 	margin:10px 0;
 	padding:5px;
 	border:1px solid #555;
 	background:#2d2d2d;
 }
+
+.noborder{
+	margin:0 !important;
+	padding:0 !important;
+	border:0 !important;
+	background:transparent !important;
+}
+
 a{ color:#4dc5ff;}
 a:hover{ color:#ffe04d;}
 /* headings */
