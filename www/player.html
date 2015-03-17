@@ -44,7 +44,7 @@
     <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="images/ajax.gif" border="0" /><br /><p style="color: #bbb; text-align: center;">جاري التحميل..</p></div>
     
 	<footer>
-    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2014 <a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">www.al-3bbas.com</a><br />
+    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2015 <a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">www.al-3bbas.com</a><br />
 		Powered by <a href="#" onclick="window.open('http://www.alsbtain.net/', '_system');return false;">Alsbtain Bulletin</a> - 
 		<a href="#" onclick="window.open('http://mobifreaks.com/free-mobile-website-templates/galaxy-mobi/', '_system');return false;">Mobifreaks</a> Template</p>
     </footer>
@@ -125,7 +125,7 @@ fail
 );
 }
 function onGetFileSuccess(fileEntry) {
-document.getElementById('downloadMSG').innerHTML = 'جاري التحميل...';
+document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/loading.gif" /> جاري التحميل...';
 var path = fileEntry.toURL().replace('dummy.html', '');
 var fileTransfer = new FileTransfer();
 fileEntry.remove();
@@ -133,15 +133,15 @@ fileTransfer.download(
 sbURL,
 path + 'Download/' + sbFilename,
 function(file) {
-document.getElementById('downloadMSG').innerHTML = 'تم التحميل!';
+document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/tick.png" /> تم التحميل!';
 },
 function(error) {
-document.getElementById('downloadMSG').innerHTML = 'حدث خطأ أثناء التحميل!';
+document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
 }
 );
 }
 function fail(evt) {
-document.getElementById('downloadMSG').innerHTML = 'حدث خطأ أثناء التحميل!';
+document.getElementById('downloadMSG').innerHTML = '<img border="0" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
 } 
    
 </script>
