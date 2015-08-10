@@ -131,7 +131,7 @@ var fileTransfer = new FileTransfer();
 fileEntry.remove();
 fileTransfer.download(
 sbURL,
-path + 'Download/' + sbFilename,
+cordova.file.dataDirectory + sbFilename,
 function(file) {
 document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل في مجلد Download!';
 },
