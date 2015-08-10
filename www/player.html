@@ -133,7 +133,7 @@ fileTransfer.download(
 sbURL,
 cordova.file.dataDirectory + sbFilename,
 function(file) {
-document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل في مجلد Download!';
+document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل بنجاح!';
 },
 function(error) {
 document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
