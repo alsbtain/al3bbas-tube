@@ -125,6 +125,8 @@ function downloadFile() {
         }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
         var rootdir = fileSystem.root;
         var fp = fileSystem.root.toNativeURL(); // Returns Fullpath of local directory
+		
+		alert(fp);
 
         fp = fp + "/" + folderName + "/" + fileName; // fullpath and name of the file which we want to give
         // download function call
