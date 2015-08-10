@@ -153,8 +153,8 @@ function filetransfer(download_link, fp) {
     fileTransfer.download(download_link, fp,
         function(entry) {
             alert("download complete: " + entry.fullPath);
-			alert(fp + entry.fullPath);
-			localStorage.setItem("sbLink", fp + entry.fullPath);
+			alert(fp);
+			localStorage.setItem("sbLink", fp);
         },
         function(error) {
             //Download abort errors or download failed errors
