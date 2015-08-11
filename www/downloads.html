@@ -67,8 +67,8 @@ function checkConnection() {
 	// End of Push Notifications DeviceReady
 	
 	downloadArray = localStorage.getItem("downloaded").split(";");
-	for (index = 0; index < downloadArray.length; ++index) {
-		output_website += '<article class="underline"><div class="post-preview"><a href="player.html?id=854"><img src="images/thumb.jpg" /></a></div><div class="post-content"><h2><a href="index.html?c=34">' + localStorage.getItem("mediaName" + downloadArray[index]) + '</a></h2><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">22 يونيو 2015</span></div></div><div class="clear"></div></article>';
+	for (index = 0; index < (downloadArray.length-1); ++index) {
+		output_website += '<article class="underline"><div class="post-preview"><a href="localPlayer.html?id=' + downloadArray[index] + '"><img src="images/thumb.jpg" /></a></div><div class="post-content"><h2><a href="localPlayer.html?id=' + downloadArray[index] + '">' + localStorage.getItem("mediaTitle" + downloadArray[index]) + '</a></h2><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">' + localStorage.getItem("mediaDate" + downloadArray[index]) + '</span></div></div><div class="clear"></div></article>';
 	}
 	
 	document.getElementById('mainContent').innerHTML = output_website;
