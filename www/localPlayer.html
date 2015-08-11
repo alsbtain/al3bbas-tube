@@ -74,13 +74,28 @@
 		
 		// End of Push Notifications DeviceReady
 		
-		var headID = document.getElementsByTagName("head")[0];         
-		var newScript = document.createElement('script');  
-		newScript.type = 'text/javascript';
-		newScript.charset = 'utf-8';  
-		newScript.src = 'http://www.al-3bbas.com/external/media_mobile11.sb.php?version=150&id=' + getUrlVars()["id"];  
-		headID.appendChild(newScript);  
+		var mediaID = getUrlVars()["id"];
 		
+		var output_title = localStorage.getItem("mediaTitle" + mediaID);
+		var output_name = localStorage.getItem("mediaName" + mediaID);
+		var output_date = localStorage.getItem("mediaDate" + mediaID);
+		var output_file = localStorage.getItem("mediaLink" + mediaID);
+		var output_image = "images/news-img-big.jpg";
+		var share = localStorage.getItem("mediaShare" + mediaID);
+
+		document.getElementById('mainContent').innerHTML = '<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="downloadFile(); return false;">تحميل المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(share)">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>';
+
+		jwplayer("myElement").setup({
+			file: output_file,
+			image: output_image,
+			width: (window.innerWidth-40),
+			height: Math.round((window.innerWidth-40)*(9/16))
+		});
+		
+		window.onresize = function(event) {
+			jwplayer().resize((window.innerWidth-40),Math.round((window.innerWidth-40)*(9/16)));
+		}
+
 		}		
 	}
 	
@@ -108,73 +123,7 @@
    		$('.menu' ).hide();   
    		$('.options li:last-child').removeClass('active');
    });
-   
-var folderName = 'Downloads';
-var fileName;
-var mediaID;
 
-function downloadFile() {
-	document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/loading.gif" /> جاري التحميل...';
-	
-    //step to request a file system 
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
-
-    function fileSystemSuccess(fileSystem) {
-        var download_link = encodeURI(sbURL);
-        fileName = download_link.substr(download_link.lastIndexOf('/') + 1); //Get filename of URL
-        var directoryEntry = fileSystem.root; // to get root path of directory
-        directoryEntry.getDirectory(folderName, {
-            create: true,
-            exclusive: false
-        }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
-        var rootdir = fileSystem.root;
-        var fp = fileSystem.root.toNativeURL(); // Returns Fullpath of local directory
-
-        fp = fp + folderName + "/" + fileName; // fullpath and name of the file which we want to give
-        // download function call
-        filetransfer(download_link, fp);
-    }
-
-    function onDirectorySuccess(parent) {
-        // Directory created successfuly
-    }
-
-    function onDirectoryFail(error) {
-        //Error while creating directory
-        //alert("Unable to create new directory: " + error.code);
-		document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
-    }
-
-    function fileSystemFail(evt) {
-        //Unable to access file system
-        //alert(evt.target.error.code);
-		document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
-    }
-}
-
-function filetransfer(download_link, fp) {
-    var fileTransfer = new FileTransfer();
-    // File download function with URL and local path
-    fileTransfer.download(download_link, fp,
-        function(entry) {
-            //alert("download complete: " + entry.fullPath);
-			mediaID = getUrlVars()["id"];
-			localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
-			localStorage.setItem("mediaTitle" + mediaID, output_title);
-			localStorage.setItem("mediaName" + mediaID, output_name);
-			localStorage.setItem("mediaImg" + mediaID, fp);
-			localStorage.setItem("mediaLink" + mediaID, fp);
-			localStorage.setItem("mediaDate" + mediaID, output_date);
-			localStorage.setItem("mediaShare" + mediaID, share);
-			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل!';
-        },
-        function(error) {
-            //Download abort errors or download failed errors
-            //alert("download error source " + error.source);
-			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
-        }
-    );
-}   
 </script>
 </body>
 </html>
