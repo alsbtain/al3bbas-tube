@@ -63,7 +63,7 @@
     function checkConnection() {
 		if (navigator.connection.type == Connection.NONE){
 		
-		var output = '<img style="display: block; margin: 0 auto;" src="images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذا البرنامج يتطلب اتصالاً بالإنترنت..<br />قم بالاتصال بالإنترنت ومن ثم افتح البرنامج..</p>';
+		var output = '<img style="display: block; margin: 0 auto;" src="images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذه الخدمة تتطلب اتصالاً بالإنترنت..<br /><a href="downloads.html"><img src="images/downloads.png" border="0" style="padding-top: 8px;" /></a></p>';
 		document.getElementById('mainContent').innerHTML = output;
 		
 		} else {
@@ -167,6 +167,7 @@ function filetransfer(download_link, fp) {
 			localStorage.setItem("mediaDate" + mediaID, output_date);
 			localStorage.setItem("mediaShare" + mediaID, share);
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل!';
+			alert(share);
         },
         function(error) {
             //Download abort errors or download failed errors
