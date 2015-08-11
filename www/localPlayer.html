@@ -61,12 +61,6 @@
 	}
 
     function checkConnection() {
-		if (navigator.connection.type == Connection.NONE){
-		
-		var output = '<img style="display: block; margin: 0 auto;" src="images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذا البرنامج يتطلب اتصالاً بالإنترنت..<br />قم بالاتصال بالإنترنت ومن ثم افتح البرنامج..</p>';
-		document.getElementById('mainContent').innerHTML = output;
-		
-		} else {
 		
 		// Push Notifications DeviceReady
 		
@@ -95,8 +89,7 @@
 		window.onresize = function(event) {
 			jwplayer().resize((window.innerWidth-40),Math.round((window.innerWidth-40)*(9/16)));
 		}
-
-		}		
+	
 	}
 	
 	// Push Notifications Functions
