@@ -75,11 +75,9 @@
 		var output_date = localStorage.getItem("mediaDate" + mediaID);
 		var output_file = localStorage.getItem("mediaLink" + mediaID);
 		var output_image = "images/news-img-big.jpg";
-		var share = localStorage.getItem("mediaShare" + mediaID);
-		
-		share = 'Hello';
+		//var share = localStorage.getItem("mediaShare" + mediaID);
 
-		document.getElementById('mainContent').innerHTML = '<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="downloadFile(); return false;">تحميل المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(share)">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>';
+		document.getElementById('mainContent').innerHTML = '<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="downloadFile(); return false;">تحميل المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(\'Hi\')">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>';
 
 		jwplayer("myElement").setup({
 			file: output_file,
