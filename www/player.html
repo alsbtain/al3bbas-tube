@@ -167,7 +167,6 @@ function filetransfer(download_link, fp) {
 			localStorage.setItem("mediaDate" + mediaID, output_date);
 			localStorage.setItem("mediaShare" + mediaID, share);
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل!';
-			alert(localStorage.getItem("mediaShare" + mediaID));
         },
         function(error) {
             //Download abort errors or download failed errors
