@@ -77,7 +77,7 @@
 		var output_image = "images/news-img-big.jpg";
 		var output_share = localStorage.getItem("mediaShare" + mediaID);
 
-		document.getElementById('mainContent').innerHTML = '<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="downloadFile(); return false;">تحميل المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(' + "'" + output_share + "'" + ')">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>';
+		alert('<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="downloadFile(); return false;">تحميل المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(' + "'" + output_share + "'" + ')">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>');
 
 		jwplayer("myElement").setup({
 			file: output_file,
