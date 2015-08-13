@@ -58,6 +58,7 @@ var downloadArray;
 var downloadLength;
 var perPage = 1;
 var output_website = '<h2 class="underline"><img src="images/arrowright.png" onclick="history.back();" /> التحميلات</h2>';
+var output_profilePic;
 
 function onDeviceReady() {
 	checkConnection();
@@ -72,7 +73,14 @@ function checkConnection() {
 	downloadLength = downloadArray.length-1;
 		
 	for (index = 0; index < downloadLength; ++index) {
-		output_website += '<article class="underline"><div class="post-preview"><a href="localPlayer.html?id=' + downloadArray[index] + '"><img src="images/thumb.jpg" /></a></div><div class="post-content"><h2><a href="localPlayer.html?id=' + downloadArray[index] + '">' + localStorage.getItem("mediaTitle" + downloadArray[index]) + '</a></h2><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">' + localStorage.getItem("mediaDate" + downloadArray[index]) + '</span></div></div><div class="clear"></div></article>';
+	
+		if (navigator.connection.type == Connection.NONE){
+			output_profilePic = 'images/thumb.jpg';
+		} else {
+			output_profilePic = localStorage.getItem("mediaTitle" + downloadArray[index]);
+		}
+
+		output_website += '<article class="underline"><div class="post-preview"><a href="localPlayer.html?id=' + downloadArray[index] + '"><img src="' + output_profilePic + '" /></a></div><div class="post-content"><h2><a href="localPlayer.html?id=' + downloadArray[index] + '">' + localStorage.getItem("mediaTitle" + downloadArray[index]) + '</a></h2><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">' + localStorage.getItem("mediaDate" + downloadArray[index]) + '</span></div></div><div class="clear"></div></article>';
 	}
 	
 	document.getElementById('mainContent').innerHTML = output_website;

@@ -162,7 +162,7 @@ function filetransfer(download_link, fp) {
 			localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
 			localStorage.setItem("mediaTitle" + mediaID, output_title);
 			localStorage.setItem("mediaName" + mediaID, output_name);
-			localStorage.setItem("mediaImg" + mediaID, fp);
+			localStorage.setItem("mediaImg" + mediaID, output_profilePic);
 			localStorage.setItem("mediaLink" + mediaID, fp);
 			localStorage.setItem("mediaDate" + mediaID, output_date);
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم التحميل!';
