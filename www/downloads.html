@@ -72,6 +72,8 @@ function checkConnection() {
 	downloadArray = localStorage.getItem("downloaded").split(";");
 	downloadLength = downloadArray.length-1;
 	
+	alert(downloadLength);
+	
 	if (downloadLength > 0){
 		
 	for (index = 0; index < downloadLength; ++index) {
