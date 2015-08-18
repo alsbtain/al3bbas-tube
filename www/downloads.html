@@ -69,7 +69,7 @@ function checkConnection() {
 	$.getScript("js/push_deviceReady.js", function(){});
 	// End of Push Notifications DeviceReady
 	
-	if (typeof localStorage.getItem("downloaded") !== 'undefined') {
+	if (localStorage.getItem("downloaded") !== 'null') {
 	downloadArray = localStorage.getItem("downloaded").split(";");
 	downloadLength = downloadArray.length-1;
 	} else {
