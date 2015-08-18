@@ -69,10 +69,12 @@ function checkConnection() {
 	$.getScript("js/push_deviceReady.js", function(){});
 	// End of Push Notifications DeviceReady
 	
+	if (typeof localStorage.getItem("downloaded") !== 'undefined') {
 	downloadArray = localStorage.getItem("downloaded").split(";");
 	downloadLength = downloadArray.length-1;
-	
-	alert(downloadLength);
+	} else {
+	downloadLength = 0;
+	}
 	
 	if (downloadLength > 0){
 		
@@ -92,8 +94,6 @@ function checkConnection() {
 	output_website += '<p style="color: #bbbbbb;">لا توجد مقاطع في مجلد التحميلات!</p>';
 	
 	}
-	
-	alert(output_website);
 	
 	document.getElementById('mainContent').innerHTML = output_website;
 }
