@@ -112,8 +112,6 @@ function deleteFile(){
 
 mediaID = getUrlVars()["id"];
 
-localStorage.removeItem("lastname");
-
 //localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
 
 fileSystem.root.getFile(localStorage.getItem("mediaLink" + mediaID), {create:true}, function(f) {
