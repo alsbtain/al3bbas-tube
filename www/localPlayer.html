@@ -56,6 +56,7 @@
 
 	var pushNotification;
 	var mediaID;
+	var mediaIDs;
 	
 	function onDeviceReady() {
 		checkConnection();
@@ -106,7 +107,11 @@ function deleteFile(){
 
 mediaID = getUrlVars()["id"];
 
-//localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
+mediaIDs = ';' + localStorage.getItem("downloaded") + ';';
+mediaIDs = mediaIDs.replace(';' + mediaID + ';', ';');
+mediaIDs = mediaIDs.substring(1, mediaIDs.length-1);
+
+localStorage.setItem("downloaded", mediaIDs);
 
 localStorage.removeItem("mediaTitle" + mediaID);
 localStorage.removeItem("mediaName" + mediaID);
