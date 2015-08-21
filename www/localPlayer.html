@@ -55,6 +55,7 @@
 <script type="text/javascript">
 
 	var pushNotification;
+	var mediaID;
 	
 	function onDeviceReady() {
 		checkConnection();
@@ -68,7 +69,7 @@
 		
 		// End of Push Notifications DeviceReady
 		
-		var mediaID = getUrlVars()["id"];
+		mediaID = getUrlVars()["id"];
 		
 		var output_title = localStorage.getItem("mediaTitle" + mediaID);
 		var output_name = localStorage.getItem("mediaName" + mediaID);
@@ -78,7 +79,7 @@
 		
 		var output_share = output_title + "\\nالخطيب: " + output_name + "\\n\\nhttp://sbta.in/al3bbas.php?id=" + mediaID + "\\n\\nمن تطبيق حسينية أبي الفضل العباس بالتركية:\\n\\nللأندرويد:\\nhttp://sbta.in/al3bbas_Android\\n\\nلنظام iOS:\\nhttp://sbta.in/al3bbas_iOS";
 
-		document.getElementById('mainContent').innerHTML = '<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="downloadFile(); return false;">تحميل المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(' + "'" + output_share + "'" + ')">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>';
+		document.getElementById('mainContent').innerHTML = '<article><h1><img src="images/arrowright.png" onclick="history.back();" /> ' + output_title + '</h1><p>' + output_name + ' - ' + output_date + '</p><div style="direction: ltr; float: right;"><div id="myElement">جاري تحميل المشغّل...</div></div><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="deleteFile(); return false;">حذف المقطع</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(' + "'" + output_share + "'" + ')">مشاركة المقطع</a></p><p id="downloadMSG" style="text-align: center;"></p></article>';
 
 		jwplayer("myElement").setup({
 			file: output_file,
@@ -100,6 +101,28 @@
 	// End of Push Notifications Functions
 	
 	document.addEventListener("deviceready", onDeviceReady, true);
+	
+function deleteFile(){
+
+mediaID = getUrlVars()["id"];
+
+localStorage.removeItem("lastname");
+
+//localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
+
+fileSystem.root.getFile(localStorage.getItem("mediaLink" + mediaID), {create:true}, function(f) {
+f.remove(function() {});
+}, onError);
+
+localStorage.removeItem("mediaTitle" + mediaID);
+localStorage.removeItem("mediaName" + mediaID);
+localStorage.removeItem("mediaImg" + mediaID);
+localStorage.removeItem("mediaLink" + mediaID);
+localStorage.removeItem("mediaDate" + mediaID);
+
+document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم حذف المقطع بنجاح!';
+
+}
 	
    window.addEventListener("load",function() {
 	  // Set a timeout...
