@@ -102,21 +102,11 @@
 	
 	document.addEventListener("deviceready", onDeviceReady, true);
 	
-	
-//generic error handler
-function onError(e) {
-document.getElementById('downloadMSG').innerHTML = e.toString();
-}
-	
 function deleteFile(){
 
 mediaID = getUrlVars()["id"];
 
 //localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
-
-fileSystem.root.getFile(localStorage.getItem("mediaLink" + mediaID), {create:true}, function(f) {
-f.remove(function() {});
-}, onError);
 
 localStorage.removeItem("mediaTitle" + mediaID);
 localStorage.removeItem("mediaName" + mediaID);
