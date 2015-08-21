@@ -102,6 +102,12 @@
 	
 	document.addEventListener("deviceready", onDeviceReady, true);
 	
+	
+//generic error handler
+function onError(e) {
+document.getElementById('downloadMSG').innerHTML = e.toString();
+}
+	
 function deleteFile(){
 
 mediaID = getUrlVars()["id"];
