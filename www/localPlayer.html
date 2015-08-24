@@ -107,6 +107,8 @@ function deleteFile(){
 
 mediaID = getUrlVars()["id"];
 
+fileSystem.root.getFile(localStorage.getItem("mediaLink" + mediaID), {create: false, exclusive: false}, gotRemoveFileEntry, fail);
+
 mediaIDs = ';' + localStorage.getItem("downloaded") + ';';
 mediaIDs = mediaIDs.replace(';' + mediaID + ';', ';');
 mediaIDs = mediaIDs.substring(1, mediaIDs.length-1);
@@ -121,6 +123,21 @@ localStorage.removeItem("mediaDate" + mediaID);
 
 document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم حذف المقطع بنجاح!';
 
+window.history.back();
+
+}
+
+function gotRemoveFileEntry(fileEntry){
+    console.log(fileEntry);
+    fileEntry.remove(success, fail);
+}
+
+function success(entry) {
+    console.log("Removal succeeded");
+}
+
+function fail(error) {
+    console.log("Error removing file: " + error.code);
 }
 	
    window.addEventListener("load",function() {
