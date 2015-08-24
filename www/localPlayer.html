@@ -109,17 +109,23 @@ mediaID = getUrlVars()["id"];
 
 fileSystem.root.getFile(localStorage.getItem("mediaLink" + mediaID), {create: false, exclusive: false}, gotRemoveFileEntry, fail);
 
-function gotRemoveFileEntry(fileEntry){
-    console.log(fileEntry);
-    fileEntry.remove(success, fail);
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
+
+function fileSystemSuccess(fileSystem) {
+directoryEntry.getFile(localStorage.getItem("mediaLink" + mediaID), {
+	create: false,
+	exclusive: false
+}, function(f) {
+	f.remove(function() {
+	
+	document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم حذف المقطع بنجاح!';
+	
+	});
+}, onError);
 }
 
-function success(entry) {
-    console.log("Removal succeeded");
-}
+function onError(error){
 
-function fail(error) {
-    console.log("Error removing file: " + error.code);
 }
 
 mediaIDs = ';' + localStorage.getItem("downloaded") + ';';
@@ -134,9 +140,9 @@ localStorage.removeItem("mediaImg" + mediaID);
 localStorage.removeItem("mediaLink" + mediaID);
 localStorage.removeItem("mediaDate" + mediaID);
 
-document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم حذف المقطع بنجاح!';
+//document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/tick.png" /> تم حذف المقطع بنجاح!';
 
-window.history.back();
+//window.history.back();
 
 }
 	
