@@ -109,6 +109,19 @@ mediaID = getUrlVars()["id"];
 
 fileSystem.root.getFile(localStorage.getItem("mediaLink" + mediaID), {create: false, exclusive: false}, gotRemoveFileEntry, fail);
 
+function gotRemoveFileEntry(fileEntry){
+    console.log(fileEntry);
+    fileEntry.remove(success, fail);
+}
+
+function success(entry) {
+    console.log("Removal succeeded");
+}
+
+function fail(error) {
+    console.log("Error removing file: " + error.code);
+}
+
 mediaIDs = ';' + localStorage.getItem("downloaded") + ';';
 mediaIDs = mediaIDs.replace(';' + mediaID + ';', ';');
 mediaIDs = mediaIDs.substring(1, mediaIDs.length-1);
@@ -125,19 +138,6 @@ document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="i
 
 window.history.back();
 
-}
-
-function gotRemoveFileEntry(fileEntry){
-    console.log(fileEntry);
-    fileEntry.remove(success, fail);
-}
-
-function success(entry) {
-    console.log("Removal succeeded");
-}
-
-function fail(error) {
-    console.log("Error removing file: " + error.code);
 }
 	
    window.addEventListener("load",function() {
