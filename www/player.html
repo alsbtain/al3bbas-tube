@@ -112,8 +112,17 @@
 var folderName = 'Download';
 var fileName;
 var mediaID;
+var mediaIDs;
 
 function downloadFile() {
+
+mediaIDs = ';' + localStorage.getItem("downloaded") + ';';
+if(mediaIDs.indexOf(';' + getUrlVars()["id"] + ';') > -1){
+
+	document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> تم تحميل هذا الملف مسبقاً!';
+
+}else{
+
 	document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/loading.gif" /> جاري التحميل...';
 	
     //step to request a file system 
@@ -150,7 +159,7 @@ function downloadFile() {
         //alert(evt.target.error.code);
 		document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
     }
-}
+}}
 
 function filetransfer(download_link, fp) {
     var fileTransfer = new FileTransfer();
@@ -173,7 +182,7 @@ function filetransfer(download_link, fp) {
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="images/cross.png" /> حدث خطأ أثناء التحميل!';
         }
     );
-}   
+}
 </script>
 </body>
 </html>
