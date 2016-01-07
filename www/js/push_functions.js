@@ -34,6 +34,7 @@ function onNotificationGCM(e) {
 		break;
 		
 		case 'message':
+			navigator.notification.alert(e.payload.message, undefined, 'رسالة', 'موافق');
 			// if this flag is set, this notification happened while we were in the foreground.
 			// you might want to play a sound to get the user's attention, throw up a dialog, etc.
 			if (e.foreground)
@@ -52,8 +53,6 @@ function onNotificationGCM(e) {
 					//$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
 				}
 			}
-			
-			navigator.notification.alert(e.payload.message, undefined, 'رسالة', 'موافق');
 				
 			//$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
 			//$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
