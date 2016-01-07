@@ -61,10 +61,12 @@ function onNotificationGCM(e) {
 		
 		case 'error':
 			//$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+			navigator.notification.alert(e.payload.message, undefined, 'رسالة', 'موافق');
 		break;
 		
 		default:
 			//$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+			navigator.notification.alert(e.payload.message, undefined, 'رسالة', 'موافق');
 		break;
 	}
 }
