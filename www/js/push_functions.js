@@ -29,7 +29,7 @@ function onNotificationGCM(e) {
 			// here is where you might want to send it the regID for later use.
 			//console.log("regID = " + e.regid);
 			// SEND TO SERVER
-			$.get("http://www.al-3bbas.com/external/push.sb.php?pass=al3bbasDevelopment&syst=android&id=" + e.regid);
+			$.get(sBulletin_path + "external/push.sb.php?pass=al3bbasDevelopment&syst=android&id=" + e.regid);
 		}
 		break;
 		
@@ -74,7 +74,7 @@ function tokenHandler (result) {
 	// Your iOS push server needs to know the token before it can push to this device
 	// here is where you might want to send it the token for later use.
 	// SEND TO SERVER
-	$.get("http://www.al-3bbas.com/external/push.sb.php?pass=al3bbasDevelopment&syst=ios&id=" + result);
+	$.get(sBulletin_path + "external/push.sb.php?pass=al3bbasDevelopment&syst=ios&id=" + result);
 }
 
 function successHandler (result) {

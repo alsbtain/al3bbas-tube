@@ -6,7 +6,7 @@ try
 	pushNotification = window.plugins.pushNotification;
 	if (device.platform == 'android' || device.platform == 'Android') {
 		//$("#app-status-ul").append('<li>registering android</li>');
-		pushNotification.register(successHandler, errorHandler, {"senderID":"559085601741","ecb":"onNotificationGCM"});		// required!
+		pushNotification.register(successHandler, errorHandler, {"senderID":senderID_Android,"ecb":"onNotificationGCM"});		// required!
 	} else {
 		//$("#app-status-ul").append('<li>registering iOS</li>');
 		pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
