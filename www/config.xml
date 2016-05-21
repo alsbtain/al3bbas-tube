@@ -3,10 +3,10 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id = "com.Alsbtain.Al3bbas"
-        version = "1.6.0"
-		versionCode = "7">
+        version = "1.7.0"
+		versionCode = "8">
 
-    <name>al3bbas</name>
+    <name>حسينية العباس</name>
 
     <description>
         Al-3bbas.com Media
@@ -18,7 +18,7 @@
 
     <preference name="permissions" value="none"/>
 
-    <preference name="phonegap-version" value="3.7.0" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
@@ -54,7 +54,6 @@
     <icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114" />
     <icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144" />
 
-	<!--<gap:splash src="splash.png" gap:platform="ios" />-->
 	<gap:splash src="splash.png"          gap:platform="ios"     width="320" height="480" />
 	<gap:splash src="splash.png"       gap:platform="ios"     width="640" height="960" />
 	<gap:splash src="splash.png"         gap:platform="ios"     width="480" height="320" />
