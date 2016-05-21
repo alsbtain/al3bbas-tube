@@ -62,6 +62,7 @@
 	var pushNotification;
 
 	function onDeviceReady() {
+		navigator.splashscreen.hide();
 		checkConnection();
 	}
 
@@ -85,6 +86,7 @@
 		newScript.type = 'text/javascript';
 		newScript.charset = 'utf-8';  
 		newScript.src = sBulletin_path + 'external/media_mobile12.sb.php?c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"];  
+		alert(newScript.src)
 		headID.appendChild(newScript);
 
 		}
