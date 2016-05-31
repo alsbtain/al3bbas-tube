@@ -2,10 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>حسينية أبي الفضل العباس بالتركية</title>
+  <title>الرئيسية</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" /> 
   <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
   <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+  <script type="text/javascript" charset="utf-8" src="settings.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/video.js"></script>
   <script type="text/javascript" src="js/PushNotification.js"></script>
   
@@ -29,10 +30,10 @@
 
   <div class="wrap">
     <header>
-      <div class="logo"><a href="index.html"><img src="images/logo.png" alt="حسينية أبي الفضل العباس بالتركية"/></a></div>
+      <div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
       <div class="options">
       	<ul>
-      		<li>Menu</li>
+      		<li>القائمة</li>
       	</ul>
       </div>
       <div class="clear"></div>
@@ -49,7 +50,7 @@
     <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="images/ajax.gif" border="0" /><br /><p style="color: #bbb; text-align: center;">جاري التحميل..</p></div>
 	
     <footer>
-    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2015 <a href="#" onclick="window.open('http://www.al-3bbas.com/', '_system');return false;">www.al-3bbas.com</a><br />
+    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2016 <a href="#" onclick="window.open(siteURL, '_system');return false;">www.al-3bbas.com</a><br />
 		Powered by <a href="#" onclick="window.open('http://www.alsbtain.net/', '_system');return false;">Alsbtain Bulletin</a> - 
 		<a href="#" onclick="window.open('http://mobifreaks.com/free-mobile-website-templates/galaxy-mobi/', '_system');return false;">Mobifreaks</a> Template</p>
     </footer>
@@ -84,7 +85,7 @@
 		var newScript = document.createElement('script');  
 		newScript.type = 'text/javascript';
 		newScript.charset = 'utf-8';  
-		newScript.src = 'http://www.al-3bbas.com/external/media_mobile12.sb.php?c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"];  
+		newScript.src = siteURL + 'external/media_mobile12.sb.php?c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"];  
 		headID.appendChild(newScript);
 
 		}
