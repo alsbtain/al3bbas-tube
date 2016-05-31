@@ -6,3 +6,7 @@ var externalMenu = {
 };
 
 var copyRight = 'www.al-3bbas.com';
+
+var shareFooter = "\\n\\nمن تطبيق حسينية أبي الفضل العباس بالتركية:\\n\\nللأندرويد:\\nhttp://sbta.in/al3bbas_Android\\n\\nلنظام iOS:\\nhttp://sbta.in/al3bbas_iOS";
+
+var AndroidSenderID = "559085601741";
