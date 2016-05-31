@@ -65,6 +65,9 @@ function onDeviceReady() {
 	} 
 	var ul = document.getElementById("mainSbMenu");
 	ul.innerHTML += sbMenu;
+	
+	var sbCopyright = document.getElementById("sb_copyright");
+	sbCopyright.innerHTML = copyRight;
 		
 	checkConnection();
 }
