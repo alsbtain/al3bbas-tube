@@ -5,6 +5,7 @@
   <title>الرئيسية</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" /> 
   <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
+  <link rel="stylesheet" media="all" href="theme/customize.css" type="text/css">
   <link rel="stylesheet" media="all" href="http://sbta.in/sbulletin/customize.css" type="text/css">
   <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
   <script type="text/javascript" charset="utf-8" src="settings.js"></script>
@@ -31,7 +32,7 @@
 
   <div class="wrap">
     <header>
-      <div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+      <div class="logo"><a href="index.html"><img src="theme/images/logo.png" /></a></div>
       <div class="options">
       	<ul>
       		<li>القائمة</li>
@@ -45,7 +46,7 @@
 	    </nav>
     </header>
 	
-    <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="images/ajax.gif" border="0" /><br /><p style="color: #bbb; text-align: center;">جاري التحميل..</p></div>
+    <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="theme/images/ajax.gif" border="0" /><br /><p style="color: #bbb; text-align: center;">جاري التحميل..</p></div>
 	
     <footer>
     	<p style="direction: ltr; text-align: center;">Copyright &copy; 2016 <a href="#" onclick="window.open(siteURL, '_system');return false;"><span id="sb_copyright"></span></a><br />
@@ -79,7 +80,7 @@
     function checkConnection() {
 		if (navigator.connection.type == Connection.NONE){
 		
-		var output = '<img style="display: block; margin: 0 auto;" src="images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذه الخدمة تتطلب اتصالاً بالإنترنت..<br /><a href="downloads.html"><img src="images/downloads.png" border="0" style="padding-top: 8px;" /></a></p>';
+		var output = '<img style="display: block; margin: 0 auto;" src="theme/images/wifi.png" border="0" /><br /><p style="color: #4dc5ff; text-align: center;">هذه الخدمة تتطلب اتصالاً بالإنترنت..<br /><a href="downloads.html"><img src="theme/images/downloads.png" border="0" style="padding-top: 8px;" /></a></p>';
 		document.getElementById('mainContent').innerHTML = output;
 		
 		} else {
