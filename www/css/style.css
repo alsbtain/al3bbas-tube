@@ -331,14 +331,15 @@ article h2 a{ font-weight:normal;}
 .menu{
 	border-top:1px solid #5d5d5d;
 	background:#1d1d1d;
-	padding:10px;
 	z-index:100;
 }
 .menu a{
 	color:#666;
-	font-size:15px;
-	line-height:34px;
+	font-size:14px;
+	font-weight:bold;
+	line-height:50px;
 	display:block;
+	padding:0 20px;
 }
 .menu a:hover{
 	color:#aaa;
