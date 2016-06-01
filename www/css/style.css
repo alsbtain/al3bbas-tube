@@ -262,7 +262,7 @@ footer p{
 }
 .options li{
 	float:left;
-	background:url('../images/options.png') no-repeat;
+	background:url('../theme/images/options.png') no-repeat;
 	width:60px;
 	height:60px;
 	display:inline-block;
