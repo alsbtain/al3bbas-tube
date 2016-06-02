@@ -82,3 +82,11 @@ article h2 a:hover{
 #sbNoWiFi{
 	color: #4dc5ff !important;
 }
+
+.serverMainColor {
+    color:#565656 !important;
+}
+
+article{
+	color:#565656 !important;
+}

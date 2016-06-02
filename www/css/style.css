@@ -37,7 +37,7 @@ body{
 }
 article{
 	font-size:14px;
-	color:#999; /* HERE */
+	color:#999;
 }
 article,
 article.underline{
@@ -481,4 +481,8 @@ color: #ff0000;
 #sbNoWiFi{
 	color: #4dc5ff;
 	text-align: center;
+}
+
+.serverMainColor{
+	color: #bbbbbb;
 }
