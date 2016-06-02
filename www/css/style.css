@@ -472,3 +472,13 @@ font-weight: bold;
 #ads a:link, #ads a:visited, #ads a:hover, #ads a:active{
 color: #ff0000;
 }
+
+#sbLoading{
+	color: #bbb;
+	text-align: center;
+}
+
+#sbNoWiFi{
+	color: #4dc5ff;
+	text-align: center;
+}
