@@ -39,10 +39,15 @@ a {
 
 .menu a {
     color: #666666 !important;
+	border-top-color: #ddd !important;
 }
 
 .menu{
 	background:#f2f2f2 !important;
+}
+
+.menu li{
+	border-bottom-color: #ddd !important;
 }
 
 .post-preview {
@@ -60,4 +65,20 @@ h1, h2, h3, h4, h5, h6{
 footer {
     border-top-color: #ddd !important;
     color: #777 !important;
+}
+
+article h2 a{
+	color:#2d2d2d !important;
+}
+
+article h2 a:hover{
+	color:#ff3b1a !important;
+}
+
+#sbLoading{
+	color: #414141 !important;
+}
+
+#sbNoWiFi{
+	color: #4dc5ff !important;
 }
