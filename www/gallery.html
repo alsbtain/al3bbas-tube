@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
-        <title>Galleria Classic Theme</title>
+        <title>معرض الصور</title>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" />
+		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+		<script type="text/javascript" charset="utf-8" src="settings.js"></script>
+		<script type="text/javascript" src="js/PushNotification.js"></script>
         <style>
+		
+			body{direction: rtl;}
+			.galleria-theme-classic .galleria-thumbnails-container{direction: ltr !important;}
+			.galleria-theme-classic .galleria-carousel .galleria-thumbnails-list{direction: ltr !important;}
 
             /* Demo styles */
-            html,body{background:#222;margin:0;}
+            html,body{background:#000;margin:0;}
             body{border-top:4px solid #000;}
             .content{color:#777;font:12px/1.4 "helvetica neue",arial,sans-serif;width:100%;margin:0;}
             h1{font-size:12px;font-weight:normal;color:#ddd;margin:0;}
@@ -14,7 +22,7 @@
             a {color:#22BCB9;text-decoration:none;}
 
             /* This rule is read by Galleria to define the gallery height: */
-            #galleria{height:99vh;}
+            #galleria{height:96vh;}
         </style>
 
         <!-- load jQuery -->
@@ -34,7 +42,7 @@
                 <img 
                     src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Biandintz_eta_zaldiak_-_modified2.jpg/100px-Biandintz_eta_zaldiak_-_modified2.jpg",
                     data-big="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Biandintz_eta_zaldiak_-_modified2.jpg/1280px-Biandintz_eta_zaldiak_-_modified2.jpg"
-                    data-title="Biandintz eta zaldiak"
+                    data-title="<img src='theme/images/arrowright.png' onclick='history.back();' />Biandintz eta zaldiak"
                     data-description="Horses on Bianditz mountain, in Navarre, Spain."
                 >
             </a>
@@ -112,7 +120,8 @@
 
     // Initialize Galleria
     Galleria.run('#galleria', {
-    fullscreenDoubleTap: false
+    fullscreenDoubleTap: false,
+	showCounter: false
 });
 
     </script>
