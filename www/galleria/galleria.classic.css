@@ -64,6 +64,13 @@
 .galleria-theme-classic .galleria-info {
     width: 50%;
     top: 15px;
+    left: 15px;
+    z-index: 2;
+    position: absolute;
+}
+.galleria-theme-classic .galleria-back {
+    width: 40%;
+    top: 15px;
     right: 15px;
     z-index: 2;
     position: absolute;

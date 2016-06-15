@@ -12,6 +12,14 @@
 			body{direction: rtl;}
 			.galleria-theme-classic .galleria-thumbnails-container{direction: ltr !important;}
 			.galleria-theme-classic .galleria-carousel .galleria-thumbnails-list{direction: ltr !important;}
+			
+			.galleria-back{
+			width: 40%;
+			top: 15px;
+			right: 15px;
+			z-index: 2;
+			position: absolute;
+			}
 
             /* Demo styles */
             html,body{background:#000;margin:0;}
@@ -22,7 +30,7 @@
             a {color:#22BCB9;text-decoration:none;}
 
             /* This rule is read by Galleria to define the gallery height: */
-            #galleria{height:96vh;}
+            #galleria{height:95vh;}
         </style>
 
         <!-- load jQuery -->
@@ -34,6 +42,8 @@
     </head>
 <body>
     <div class="content">
+	
+	<div class="galleria-back"><img src="galleria/galleria-back.png" onclick="history.back();" /></div>
 
         <!-- Adding gallery images. We use resized thumbnails here for better performance, but it’s not necessary -->
 
@@ -42,7 +52,7 @@
                 <img 
                     src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Biandintz_eta_zaldiak_-_modified2.jpg/100px-Biandintz_eta_zaldiak_-_modified2.jpg",
                     data-big="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Biandintz_eta_zaldiak_-_modified2.jpg/1280px-Biandintz_eta_zaldiak_-_modified2.jpg"
-                    data-title="<img src='theme/images/arrowright.png' onclick='history.back();' />Biandintz eta zaldiak"
+                    data-title="Biandintz eta zaldiak"
                     data-description="Horses on Bianditz mountain, in Navarre, Spain."
                 >
             </a>
