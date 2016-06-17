@@ -17,8 +17,9 @@
 			width: 40%;
 			top: 20px;
 			right: 15px;
-			z-index: 2;
+			z-index: 3;
 			position: absolute;
+			padding-right: 10px;
 			}
 
             /* Demo styles */
@@ -56,7 +57,7 @@ function onDeviceReady() {
 function checkConnection() {
 	if (navigator.connection.type == Connection.NONE){
 	
-	var output = '<img style="display: block; margin: 0 auto;" src="theme/images/wifi.png" border="0" /><br /><div style="font-weight: bold; color: #fff; text-align: center;">هذه الخدمة تتطلب اتصالاً بالإنترنت..</div>';
+	var output = '<img style="display: block; margin: 0 auto; padding-top: 10px;" src="theme/images/wifi.png" border="0" /><br /><div style="font-weight: bold; color: #fff; text-align: center;">هذه الخدمة تتطلب اتصالاً بالإنترنت..</div>';
 	document.getElementById('galleria').innerHTML = output;
 	
 	} else {
@@ -82,5 +83,6 @@ $.getScript("js/push_functions.js", function(){});
 document.addEventListener("deviceready", onDeviceReady, true);
 
 </script>
+<!--<script src="http://al-3bbas.com/external/gallery_mobile13.sb.php"></script>-->
 </body>
 </html>
