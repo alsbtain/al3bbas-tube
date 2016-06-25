@@ -116,7 +116,8 @@ function onDeviceReady() {
 		
 			var articles = "news";
 			if(getUrlVars()["articles"] == 1){articles = "articles";}
-			var share = news[0].title + '\\n\\n' + siteURL + 'index.php?act=show' + articles + '&id=' + news[0].id + shareFooter;
+			var share = news[0].title + "\\n\\n" + siteURL + 'index.php?act=show' + articles + '&id=' + news[0].id + shareFooter;
+			alert(share);
 			output += '<article><h1><img src="theme/images/arrowright.png" onclick="history.back();" /> ' + news[0].title + '</h1><p>' + news[0].date + '</p><p id="myElement">';
 			if(news[0].img != ""){ output += '<img src="' + news[0].img + '" /><br />'; }
 			output += news[0].topic + '</p><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="window.open(\'' + siteURL + 'index.php?act=show' + articles + '&id=' + news[0].id + '\', \'_system\'); return false;">فتح في المتصفح</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(share)">نشر المقال</a></p></article>';
