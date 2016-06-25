@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>الأخبار والمقالات</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" /> 
+  <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
+  <link rel="stylesheet" media="all" href="theme/customize.css" type="text/css">
+  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+  <script type="text/javascript" charset="utf-8" src="settings.js"></script>
+  <script type="text/javascript" src="js/PushNotification.js"></script>
+  
+  <script type="text/javascript">	
+	function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+	}
+	
+	function openPage(newPage) {
+		location.href='news.html?c=' + getUrlVars()["c"] + '&page=' + newPage + '&articles=' + getUrlVars()["articles"];
+	}
+	
+	function showImg(img){
+		var myImg = "";
+		if(img==""){
+		myImg = "theme/images/thumb.jpg";
+		}else{
+		myImg = img;
+		}
+		return myImg;
+	}
+  </script>
+  
+</head>
+
+<body>
+
+  <div class="wrap">
+    <header>
+      <div class="logo"><a href="index.html"><img src="theme/images/logo.png" /></a></div>
+      <div class="options">
+      	<ul>
+      		<li>القائمة</li>
+      	</ul>
+      </div>
+      <div class="clear"></div>
+	    <nav class="vertical menu">
+	    	<ul id="mainSbMenu">
+				<li><a href="news.html">الأخبار</a></li>
+				<li><a href="news.html?articles=1">المقالات</a></li>
+				<li><a href="gallery.html">معرض الصور</a></li>
+				<li><a href="index.html">مكتبة الميديا</a></li>
+				<li><a href="downloads.html">التحميلات</a></li>
+        	</ul>
+	    </nav>
+    </header>
+      
+    <div class="content" id="mainContent"><img style="display: block; margin: 0 auto;" src="theme/images/ajax.gif" border="0" /><br /><p id="sbLoading">جاري التحميل..</p></div>
+    
+	<footer>
+    	<p style="direction: ltr; text-align: center;">Copyright &copy; 2016 <a href="#" onclick="window.open(siteURL, '_system');return false;"><span id="sb_copyright"></span></a><br />
+		Powered by <a href="#" onclick="window.open('http://www.alsbtain.net/', '_system');return false;">Alsbtain Bulletin</a> - 
+		<a href="#" onclick="window.open('http://mobifreaks.com/free-mobile-website-templates/galaxy-mobi/', '_system');return false;">Mobifreaks</a> Template</p>
+    </footer>
+  </div>
+ 
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+var pushNotification;
+	
+function onDeviceReady() {
+
+	arrayLength = externalMenu.title.length;
+	sbMenu = '';
+	for (i = 0; i < arrayLength; i++) {
+		sbMenu += '<li><a href="#" onclick="window.open(\'' + externalMenu.url[i] + '\', \'_system\');return false;">' + externalMenu.title[i] + '</a></li>';
+	} 
+	var ul = document.getElementById("mainSbMenu");
+	ul.innerHTML += sbMenu;
+	
+	var sbCopyright = document.getElementById("sb_copyright");
+	sbCopyright.innerHTML = copyRight;
+		
+	checkConnection();
+}
+
+    function checkConnection() {
+		if (navigator.connection.type == Connection.NONE){
+		
+		var output = '<img style="display: block; margin: 0 auto;" src="theme/images/wifi.png" border="0" /><br /><p id="sbNoWiFi">هذه الخدمة تتطلب اتصالاً بالإنترنت..<br /><a href="downloads.html"><img src="theme/images/downloads.png" border="0" style="padding-top: 8px;" /></a></p>';
+		document.getElementById('mainContent').innerHTML = output;
+		
+		} else {
+		
+		// Push Notifications DeviceReady
+		
+		$.getScript("js/push_deviceReady.js", function(){});
+		
+		// End of Push Notifications DeviceReady
+		
+		$.getScript(siteURL + 'external/news_mobile13.sb.php?id=' + getUrlVars()["id"] + '&c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"] + '&articles=' + getUrlVars()["articles"], function(){
+			
+		var output = "";
+		
+		if(ads.length > 0 && localStorage.getItem('ad_' + ads[0].id) != '1'){
+		
+		output += '<div id="ads">' + ads[0].msg + '<a href="#" onclick="this.parentNode.style.display=\'none\';localStorage.setItem(\'ad_' + ads[0].id + '\',\'1\');return false;">[موافق]</a></div>';
+		
+		}
+		
+		if(news.length == 1){
+		
+			var share = news[0].title + "\n\n" + siteURL + 'index.php?act=show' + articles + '&id=' + news[0].id + shareFooter;
+			var articles = "news";
+			if(getUrlVars()["articles"] == 1){articles = "articles";}
+			output += '<article><h1><img src="theme/images/arrowright.png" onclick="history.back();" /> ' + news[0].title + '</h1><p>' + news[0].date + '</p><p id="myElement">';
+			if(news[0].img != ""){ output += '<img src="' + news[0].img + '" /><br />'; }
+			output += news[0].topic + '</p><div class="clear"></div><br /><p style="text-align: center;"><a href="#" onclick="window.open(\'' + siteURL + 'index.php?act=show' + articles + '&id=' + news[0].id + '\', \'_system\'); return false;">فتح في المتصفح</a> || <a href="javascript:;" onclick="window.plugins.socialsharing.share(share)">مشاركة المقطع</a></p></article>';
+		
+		}else{
+		
+		if(cats.length == 0 && content.length == 0){
+		
+			output += '<h2 class="underline"><img src="theme/images/arrowright.png" onclick="history.back();" />رسالة إدارية</h2><p class="serverMainColor">هذا القسم فارغ!</p>';
+		
+		}else{
+		
+		if(cats.length > 0){
+		
+			output += '<h2 class="underline"><img src="theme/images/arrowright.png" onclick="history.back();" />الأقسام الفرعية</h2>';
+			for (i = 0; i < cats.length; i++) {
+				output += '<article class="underline"><div class="post-preview"><a href="news.html?c=' + cats[i].id + '&articles=' + getUrlVars()["articles"] + '"><img src="' + showImg(cats[i].img) + '" /></a></div><div class="post-content"><h2><a href="news.html?c=' + cats[i].id + '&articles=' + getUrlVars()["articles"] + '">' + cats[i].title + '</a></h2></div><div class="clear"></div></article>';
+			} 
+			
+			if(content.length > 0){ output += '<br />'; }
+			
+		}
+		
+		if(content.length > 0){
+		
+			output += '<h2 class="underline">';
+			
+			if(cats.length == 0){
+			output += '<img src="theme/images/arrowright.png" onclick="history.back();" />';
+			}
+
+			output += newsTitle + '</h2>';
+			for (i = 0; i < content.length; i++) {
+				output += '<article class="underline"><div class="post-preview"><a href="news.html?id=' + content[i].id + '&articles=' + getUrlVars()["articles"] + '"><img src="' + showImg(content[i].img) + '" /></a></div><div class="post-content"><h2><a href="news.html?id=' + content[i].id + '&articles=' + getUrlVars()["articles"] + '">' + content[i].title + '</a></h2><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">' + content[i].date + '</span></div></div><div class="clear"></div></article>';
+			} 
+			
+		}		
+		
+		}}
+		
+		if(pages > 0){
+		
+		output += '<br /><div style="text-align: center;"><label for="select-choice" class="inline serverMainColor">الصفحة:</label> <select name="select-choice" id="select-choice" onchange="openPage(this.options[this.selectedIndex].value);">';
+		
+		for (i = 1; i <= pages; i++) {
+			output += '<option value="' + i + '"';
+			if(i == getUrlVars()["page"]){ output += ' selected="selected"'; }
+			output += '> ' + i + ' </option>';
+		}
+						
+		output += '</select></div>';
+		
+		}
+			
+		
+		document.getElementById('mainContent').innerHTML = output;
+		
+	});
+		
+		}		
+	}
+	
+	// Push Notifications Functions
+	
+	$.getScript("js/push_functions.js", function(){});
+
+	// End of Push Notifications Functions
+	
+	document.addEventListener("deviceready", onDeviceReady, true);
+	
+   window.addEventListener("load",function() {
+	  // Set a timeout...
+	  setTimeout(function(){
+	    // Hide the address bar!
+	    window.scrollTo(0, 1);
+	  }, 0);
+	});
+   $('.menu' ).hide();
+   $('.options li:last-child').click(function(){
+   		$(this).toggleClass('active');      			
+   		$('.menu').toggle();		
+   });
+   $('.content').click(function(){
+   		$('.menu' ).hide();   
+   		$('.options li:last-child').removeClass('active');
+   });
+
+</script>
+</body>
+</html>
