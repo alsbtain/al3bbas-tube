@@ -36,11 +36,6 @@
       <div class="clear"></div>
 	    <nav class="vertical menu">
 	    	<ul id="mainSbMenu">
-				<li><a href="news.html">الأخبار</a></li>
-				<li><a href="news.html?articles=1">المقالات</a></li>
-				<li><a href="gallery.html">معرض الصور</a></li>
-				<li><a href="index.html">مكتبة الميديا</a></li>
-				<li><a href="downloads.html">التحميلات</a></li>
         	</ul>
 	    </nav>
     </header>
@@ -63,8 +58,13 @@
 	
 function onDeviceReady() {
 
-	arrayLength = externalMenu.title.length;
+	arrayLength = internalMenu.title.length;
 	sbMenu = '';
+	for (i = 0; i < arrayLength; i++) {
+		sbMenu += '<li><a href="' + internalMenu.url[i] + '">' + internalMenu.title[i] + '</a></li>';
+	}
+	
+	arrayLength = externalMenu.title.length;
 	for (i = 0; i < arrayLength; i++) {
 		sbMenu += '<li><a href="#" onclick="window.open(\'' + externalMenu.url[i] + '\', \'_system\');return false;">' + externalMenu.title[i] + '</a></li>';
 	} 
