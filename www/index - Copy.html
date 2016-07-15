@@ -59,6 +59,7 @@
   </div>
  
 <script src="js/jquery.min.js"></script>
+<script src="galleria/galleria-1.4.2.min.js"></script>
 <script type="text/javascript">
 
 var pushNotification;
@@ -100,7 +101,60 @@ function onDeviceReady() {
 		
 		// End of Push Notifications DeviceReady
 		
-		$.getScript(siteURL + 'external/t.php', function(){
+		$.getScript(siteURL + 'external/index_mobile14.sb.php?id=' + getUrlVars()["id"] + '&c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"] + '&articles=' + getUrlVars()["articles"], function(){
+					
+				var output = "";
+				
+				if(ads.length > 0 && localStorage.getItem('ad_' + ads[0].id) != '1'){
+				
+				output += '<div id="ads">' + ads[0].msg + '<a href="#" onclick="this.parentNode.style.display=\'none\';localStorage.setItem(\'ad_' + ads[0].id + '\',\'1\');return false;">[موافق]</a></div>';
+				
+				}
+				
+				output += '<h2 class="underline">جديدنا</h2>';
+				
+				for (i = 0; i < latest.length; i++) {
+					output += '<article class="underline"><div class="post-preview"><a href="' + latest[i].url + '"><img src="' + showImg(latest[i].img) + '" /></a></div><div class="post-content"><h2><a href="' + latest[i].url + '">' + latest[i].title + '</a></h2><p>' + latest[i].name + '</p><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">' + latest[i].date + '</span></div></div><div class="clear"></div></article>';
+				} 
+				
+				output += '<br />';
+				
+				for (i = 0; i < cats.length; i++) {
+				
+					output += '<h2 class="underline">' + cats[i].title + '</h2>';
+				
+					for (m = 0; m < cats[i].subs.length; m++) {
+						
+						output += '<article class="underline"><div class="post-preview"><a href="' + cats[i].subs[m].url + '"><img src="' + showImg(cats[i].subs[m].img) + '" /></a></div><div class="post-content"><h2><a href="' + cats[i].subs[m].url + '">' + cats[i].subs[m].title + '</a></h2>';
+						
+						if(cats[i].subs[m].description != ""){ output += '<p>' + cats[i].subs[m].description + '</p>'; }
+						
+						output += '</div><div class="clear"></div></article>';
+					}
+					
+					output += '<br />';
+				
+				}
+
+				if(gallery.length > 0){
+				
+					output += '<h2 class="underline">جديد الصور</h2><div id="galleria"></div>';
+				
+				}
+				
+				document.getElementById('mainContent').innerHTML = output;
+				
+				if(gallery.length > 0){
+				
+					// Load the classic theme
+					Galleria.loadTheme("galleria/galleria.classic.min.js");
+
+					// Initialize Galleria
+					Galleria.run("#galleria", {
+					dataSource: gallery,
+					fullscreenDoubleTap: false,
+					showCounter: false
+				});	}
 				
 			});
 		
@@ -138,5 +192,12 @@ function onDeviceReady() {
 } */
 
 </script>
+<style>
+	.galleria-theme-classic .galleria-thumbnails-container{direction: ltr !important;}
+	.galleria-theme-classic .galleria-carousel .galleria-thumbnails-list{direction: ltr !important;}
+
+	/* This rule is read by Galleria to define the gallery height: */
+	#galleria{height:90vh;}
+</style>
 </body>
 </html>
