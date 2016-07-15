@@ -7,7 +7,29 @@
   <link rel="stylesheet" media="all" href="css/style.css" type="text/css">
   <link rel="stylesheet" media="all" href="theme/customize.css" type="text/css">
   <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' http://al-3bbas.com http://www.al-3bbas.com data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">
+  <script type="text/javascript" charset="utf-8" src="settings.js"></script>
+  <script type="text/javascript" src="js/PushNotification.js"></script>
+  
+  <script type="text/javascript">	
+	function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+	}
+		
+	function showImg(img){
+		var myImg = "";
+		if(img==""){
+		myImg = "theme/images/thumb.jpg";
+		}else{
+		myImg = img;
+		}
+		return myImg;
+	}
+  </script>
+
 </head>
 
 <body>
@@ -37,6 +59,145 @@
   </div>
  
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="http://al-3bbas.com/external/t.php"></script>
+<script src="galleria/galleria-1.4.2.min.js"></script>
+<script type="text/javascript">
+
+var pushNotification;
+	
+function onDeviceReady() {
+
+	navigator.splashscreen.hide();
+
+	arrayLength = internalMenu.title.length;
+	sbMenu = '';
+	for (i = 0; i < arrayLength; i++) {
+		sbMenu += '<li><a href="' + internalMenu.url[i] + '">' + internalMenu.title[i] + '</a></li>';
+	}
+	
+	arrayLength = externalMenu.title.length;
+	for (i = 0; i < arrayLength; i++) {
+		sbMenu += '<li><a href="#" onclick="window.open(\'' + externalMenu.url[i] + '\', \'_system\');return false;">' + externalMenu.title[i] + '</a></li>';
+	} 
+	var ul = document.getElementById("mainSbMenu");
+	ul.innerHTML += sbMenu;
+	
+	var sbCopyright = document.getElementById("sb_copyright");
+	sbCopyright.innerHTML = copyRight;
+		
+	checkConnection();
+}
+
+    function checkConnection() {
+		if (navigator.connection.type == Connection.NONE){
+		
+		var output = '<img style="display: block; margin: 0 auto;" src="theme/images/wifi.png" border="0" /><br /><p id="sbNoWiFi">هذه الخدمة تتطلب اتصالاً بالإنترنت..<br /><a href="downloads.html"><img src="theme/images/downloads.png" border="0" style="padding-top: 8px;" /></a></p>';
+		document.getElementById('mainContent').innerHTML = output;
+		
+		} else {
+		
+		// Push Notifications DeviceReady
+		
+		$.getScript("js/push_deviceReady.js", function(){});
+		
+		// End of Push Notifications DeviceReady
+		
+		$.getScript(siteURL + 'external/index_mobile14.sb.php?id=' + getUrlVars()["id"] + '&c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"] + '&articles=' + getUrlVars()["articles"], function(){
+					
+				var output = "";
+				
+				if(ads.length > 0 && localStorage.getItem('ad_' + ads[0].id) != '1'){
+				
+				output += '<div id="ads">' + ads[0].msg + '<a href="#" onclick="this.parentNode.style.display=\'none\';localStorage.setItem(\'ad_' + ads[0].id + '\',\'1\');return false;">[موافق]</a></div>';
+				
+				}
+				
+				output += '<h2 class="underline">جديدنا</h2>';
+				
+				for (i = 0; i < latest.length; i++) {
+					output += '<article class="underline"><div class="post-preview"><a href="' + latest[i].url + '"><img src="' + showImg(latest[i].img) + '" /></a></div><div class="post-content"><h2><a href="' + latest[i].url + '">' + latest[i].title + '</a></h2><p>' + latest[i].name + '</p><div class="date" style="width: 100px"><span style="width: 100%; text-align: center;">' + latest[i].date + '</span></div></div><div class="clear"></div></article>';
+				} 
+				
+				output += '<br />';
+				
+				for (i = 0; i < cats.length; i++) {
+				
+					output += '<h2 class="underline">' + cats[i].title + '</h2>';
+				
+					for (m = 0; m < cats[i].subs.length; m++) {
+						
+						output += '<article class="underline"><div class="post-preview"><a href="' + cats[i].subs[m].url + '"><img src="' + showImg(cats[i].subs[m].img) + '" /></a></div><div class="post-content"><h2><a href="' + cats[i].subs[m].url + '">' + cats[i].subs[m].title + '</a></h2>';
+						
+						if(cats[i].subs[m].description != ""){ output += '<p>' + cats[i].subs[m].description + '</p>'; }
+						
+						output += '</div><div class="clear"></div></article>';
+					}
+					
+					output += '<br />';
+				
+				}
+
+				if(gallery.length > 0){
+				
+					output += '<h2 class="underline">جديد الصور</h2><div id="galleria"></div>';
+				
+				}
+				
+				document.getElementById('mainContent').innerHTML = output;
+				
+				if(gallery.length > 0){
+				
+					// Load the classic theme
+					Galleria.loadTheme("galleria/galleria.classic.min.js");
+
+					// Initialize Galleria
+					Galleria.run("#galleria", {
+					dataSource: gallery,
+					fullscreenDoubleTap: false,
+					showCounter: false
+				});	}
+				
+			});
+		
+		}		
+	}
+	
+	// Push Notifications Functions
+	
+	$.getScript("js/push_functions.js", function(){});
+
+	// End of Push Notifications Functions
+	
+	document.addEventListener("deviceready", onDeviceReady, true);
+	
+   window.addEventListener("load",function() {
+	  // Set a timeout...
+	  setTimeout(function(){
+	    // Hide the address bar!
+	    window.scrollTo(0, 1);
+	  }, 0);
+	});
+   $('.menu' ).hide();
+   $('.options li:last-child').click(function(){
+   		$(this).toggleClass('active');      			
+   		$('.menu').toggle();		
+   });
+   $('.content').click(function(){
+   		$('.menu' ).hide();   
+   		$('.options li:last-child').removeClass('active');
+   });
+   
+/* window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+} */
+
+</script>
+<style>
+	.galleria-theme-classic .galleria-thumbnails-container{direction: ltr !important;}
+	.galleria-theme-classic .galleria-carousel .galleria-thumbnails-list{direction: ltr !important;}
+
+	/* This rule is read by Galleria to define the gallery height: */
+	#galleria{height:90vh;}
+</style>
 </body>
 </html>
