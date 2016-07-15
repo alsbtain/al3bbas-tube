@@ -3,9 +3,13 @@ var siteURL = 'http://www.al-3bbas.com/';
 // var shareURL = siteURL + 'media_redirect.php';
 var shareURL = 'http://sbta.in/al3bbas.php';
 
-var internalMenu = { 
+/* var internalMenu = { 
     title: ["الأخبار", "المقالات", "مكتبة الصور", "مكتبة الميديا", "مجلد التحميلات"],
     url: ["news.html", "news.html?articles=1", "gallery.html", "media.html", "downloads.html"]
+}; */
+var internalMenu = { 
+    title: ["مكتبة الميديا", "مكتبة الصور", "مجلد التحميلات"],
+    url: ["media.html", "gallery.html", "downloads.html"]
 };
 
 var externalMenu = { 
