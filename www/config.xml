@@ -39,9 +39,9 @@
 	<gap:plugin name="org.apache.cordova.file" />
 	<gap:plugin name="org.apache.cordova.file-transfer" />
 
-	<gap:plugin name="nl.x-services.plugins.socialsharing" />
+	<!--<gap:plugin name="nl.x-services.plugins.socialsharing" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
-	<gap:plugin name="nl.kingsquare.background-audio" />
+	<gap:plugin name="nl.kingsquare.background-audio" />-->
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi" />
