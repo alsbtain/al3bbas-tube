@@ -9,27 +9,6 @@
   <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
   <script type="text/javascript" charset="utf-8" src="settings.js"></script>
   <script type="text/javascript" src="js/PushNotification.js"></script>
-  
-  <script type="text/javascript">	
-	function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-	}
-		
-	function showImg(img){
-		var myImg = "";
-		if(img==""){
-		myImg = "theme/images/thumb.jpg";
-		}else{
-		myImg = img;
-		}
-		return myImg;
-	}
-  </script>
-
 </head>
 
 <body>
@@ -59,85 +38,6 @@
   </div>
  
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript">
-
-var pushNotification;
-	
-function onDeviceReady() {
-
-	navigator.splashscreen.hide();
-
-	arrayLength = internalMenu.title.length;
-	sbMenu = '';
-	for (i = 0; i < arrayLength; i++) {
-		sbMenu += '<li><a href="' + internalMenu.url[i] + '">' + internalMenu.title[i] + '</a></li>';
-	}
-	
-	arrayLength = externalMenu.title.length;
-	for (i = 0; i < arrayLength; i++) {
-		sbMenu += '<li><a href="#" onclick="window.open(\'' + externalMenu.url[i] + '\', \'_system\');return false;">' + externalMenu.title[i] + '</a></li>';
-	} 
-	var ul = document.getElementById("mainSbMenu");
-	ul.innerHTML += sbMenu;
-	
-	var sbCopyright = document.getElementById("sb_copyright");
-	sbCopyright.innerHTML = copyRight;
-		
-	checkConnection();
-}
-
-    function checkConnection() {
-		if (navigator.connection.type == Connection.NONE){
-		
-		var output = '<img style="display: block; margin: 0 auto;" src="theme/images/wifi.png" border="0" /><br /><p id="sbNoWiFi">هذه الخدمة تتطلب اتصالاً بالإنترنت..<br /><a href="downloads.html"><img src="theme/images/downloads.png" border="0" style="padding-top: 8px;" /></a></p>';
-		document.getElementById('mainContent').innerHTML = output;
-		
-		} else {
-		
-		// Push Notifications DeviceReady
-		
-		$.getScript("js/push_deviceReady.js", function(){});
-		
-		// End of Push Notifications DeviceReady
-		
-		$.getScript(siteURL + 'external/t.php', function(){
-				
-			});
-		
-		}		
-	}
-	
-	// Push Notifications Functions
-	
-	$.getScript("js/push_functions.js", function(){});
-
-	// End of Push Notifications Functions
-	
-	document.addEventListener("deviceready", onDeviceReady, true);
-	
-   window.addEventListener("load",function() {
-	  // Set a timeout...
-	  setTimeout(function(){
-	    // Hide the address bar!
-	    window.scrollTo(0, 1);
-	  }, 0);
-	});
-   $('.menu' ).hide();
-   $('.options li:last-child').click(function(){
-   		$(this).toggleClass('active');      			
-   		$('.menu').toggle();		
-   });
-   $('.content').click(function(){
-   		$('.menu' ).hide();   
-   		$('.options li:last-child').removeClass('active');
-   });
-   
-/* window.onerror = function(msg, url, linenumber) {
-    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-    return true;
-} */
-
-</script>
-  <script type="text/javascript" charset="utf-8" src="http://al-3bbas.com/external/t.php"></script>
+<script type="text/javascript" charset="utf-8" src="http://al-3bbas.com/external/t.php"></script>
 </body>
 </html>
