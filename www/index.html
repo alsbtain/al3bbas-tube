@@ -84,6 +84,8 @@ function onDeviceReady() {
 	var sbCopyright = document.getElementById("sb_copyright");
 	sbCopyright.innerHTML = copyRight;
 	
+	document.addEventListener("menubutton", toggleFunction, false);
+	document.addEventListener("searchbutton", toggleFunction, false);
 	document.addEventListener("volumedownbutton", toggleFunction, false);
 		
 	checkConnection();
