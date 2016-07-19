@@ -84,6 +84,7 @@ function onDeviceReady() {
 	var sbCopyright = document.getElementById("sb_copyright");
 	sbCopyright.innerHTML = copyRight;
 	
+	navigator.app.overrideButton("menubutton", true);
 	document.addEventListener("menubutton", toggleFunction, false);
 		
 	checkConnection();
