@@ -84,11 +84,13 @@ function onDeviceReady() {
 	var sbCopyright = document.getElementById("sb_copyright");
 	sbCopyright.innerHTML = copyRight;
 	
-	document.addEventListener("menubutton", function(){
-   		alert("Hi");		
-   }, false);
+	document.addEventListener("menubutton", toggleFunction, false);
 		
 	checkConnection();
+}
+
+function toggleFunction(){
+	alert("Hi");
 }
 
     function checkConnection() {
@@ -189,10 +191,10 @@ function onDeviceReady() {
    		$('.options li:last-child').removeClass('active');
    });
    
-/* window.onerror = function(msg, url, linenumber) {
+window.onerror = function(msg, url, linenumber) {
     alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
     return true;
-} */
+}
 
 </script>
 <style>
