@@ -84,15 +84,12 @@ function onDeviceReady() {
 	var sbCopyright = document.getElementById("sb_copyright");
 	sbCopyright.innerHTML = copyRight;
 	
-	document.addEventListener("menubutton", toggleFunction, false);
-	document.addEventListener("searchbutton", toggleFunction, false);
-	document.addEventListener("volumedownbutton", toggleFunction, false);
+	document.addEventListener("volumedownbutton", function(){
+   		$(this).toggleClass('active');      			
+   		$('.menu').toggle();		
+   }, false);
 		
 	checkConnection();
-}
-
-function toggleFunction(){
-	alert("Hi");
 }
 
     function checkConnection() {
@@ -193,10 +190,10 @@ function toggleFunction(){
    		$('.options li:last-child').removeClass('active');
    });
    
-window.onerror = function(msg, url, linenumber) {
+/* window.onerror = function(msg, url, linenumber) {
     alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
     return true;
-}
+} */
 
 </script>
 <style>
