@@ -83,6 +83,11 @@ function onDeviceReady() {
 	
 	var sbCopyright = document.getElementById("sb_copyright");
 	sbCopyright.innerHTML = copyRight;
+	
+	document.addEventListener("menubutton", function(){
+   		$(this).toggleClass('active');      			
+   		$('.menu').toggle();		
+   }, false);
 		
 	checkConnection();
 }
