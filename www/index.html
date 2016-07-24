@@ -88,6 +88,11 @@ function onDeviceReady() {
    		$(this).toggleClass('active');      			
    		$('.menu').toggle();		
    }, false);
+   
+   document.addEventListener("menu", function(){
+   		$(this).toggleClass('active');      			
+   		$('.menu').toggle();		
+   }, false);
 		
 	checkConnection();
 }

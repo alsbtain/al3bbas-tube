@@ -18,6 +18,7 @@
 
     <preference name="phonegap-version" value="cli-5.2.0" />
 	
+	<preference name="android-targetSdkVersion" value="15" />
 	<preference name="permissions" value="none"/>
 	<preference name="DisallowOverscroll" value="true"/>
     <preference name="orientation" value="default" />
