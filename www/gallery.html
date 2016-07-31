@@ -32,6 +32,12 @@
 
             /* This rule is read by Galleria to define the gallery height: */
             #galleria{height:95vh;}
+			
+			.shareButton{
+			position: fixed;
+			top: 12px;
+			left: 12px;
+			}
         </style>
 
         <!-- load jQuery -->
@@ -70,7 +76,7 @@ function checkConnection() {
 	var newScript = document.createElement('script');  
 	newScript.type = 'text/javascript';
 	newScript.charset = 'utf-8';  
-	newScript.src = siteURL + 'external/gallery_mobile14.sb.php';  
+	newScript.src = siteURL + 'external/gallery_mobile15.sb.php';  
 	headID.appendChild(newScript);  
 	
 	}		
@@ -83,6 +89,6 @@ $.getScript("js/push_functions.js", function(){});
 document.addEventListener("deviceready", onDeviceReady, true);
 
 </script>
-<script src="http://al-3bbas.com/external/gallery_mobile14.sb.php"></script>
+<script src="http://al-3bbas.com/external/gallery_mobile15.sb.php"></script>
 </body>
 </html>

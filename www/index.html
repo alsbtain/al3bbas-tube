@@ -101,7 +101,7 @@ function onDeviceReady() {
 		
 		// End of Push Notifications DeviceReady
 		
-		$.getScript(siteURL + 'external/index_mobile14.sb.php?id=' + getUrlVars()["id"] + '&c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"] + '&articles=' + getUrlVars()["articles"], function(){
+		$.getScript(siteURL + 'external/index_mobile15.sb.php?id=' + getUrlVars()["id"] + '&c=' + getUrlVars()["c"] + '&page=' + getUrlVars()["page"] + '&articles=' + getUrlVars()["articles"], function(){
 					
 				var output = "";
 				
@@ -197,6 +197,12 @@ function onDeviceReady() {
 
 	/* This rule is read by Galleria to define the gallery height: */
 	#galleria{height:90vh;}
+	
+	.shareButton{
+	position: fixed;
+	top: 12px;
+	left: 12px;
+	}
 </style>
 </body>
 </html>
