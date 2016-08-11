@@ -76,5 +76,6 @@
 	<gap:platform name="android" />
 	
 	<allow-intent href="*" />
+	<allow-navigation href="*" />
 
 </widget>
