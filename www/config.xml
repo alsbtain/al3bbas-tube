@@ -74,5 +74,7 @@
 
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
+	
+	<allow-intent href="soundcloud:*" />
 
 </widget>
