@@ -75,7 +75,8 @@
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
 	
-	<allow-intent href="*" />
-	<allow-navigation href="*" />
+	<allow-intent href="soundcloud://tracks:*" />
+	<allow-intent href="soundcloud:*" />
+	<allow-intent href="tracks:*" />
 
 </widget>
