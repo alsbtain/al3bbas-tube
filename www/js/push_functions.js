@@ -30,7 +30,7 @@ function onNotificationGCM(e) {
 			//console.log("regID = " + e.regid);
 			// SEND TO SERVER
 			$.get(siteURL + "external/push.sb.php?pass=al3bbasDevelopment&syst=android&id=" + e.regid);
-			alert(e.regid);
+			// alert(e.regid);
 		}
 		break;
 		
@@ -62,7 +62,7 @@ function onNotificationGCM(e) {
 		
 		case 'error':
 			//$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
-			alert(e.msg);
+			// alert(e.msg);
 		break;
 		
 		default:
