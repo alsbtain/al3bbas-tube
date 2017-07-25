@@ -41,9 +41,8 @@
     <plugin name="cordova-plugin-splashscreen" />
 
 	<plugin name="cordova-plugin-x-socialsharing" />
-	<plugin name="https://github.com/AubreyHewes/cordova-background-audio.git" />
-	
-	<plugin name="https://github.com/alsbtain/PushPlugin.git" />
+	<plugin name="https://github.com/AubreyHewes/cordova-background-audio.git" source="git" />
+	<plugin name="https://github.com/alsbtain/PushPlugin.git" source="git" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"	gap:qualifier="ldpi" />
