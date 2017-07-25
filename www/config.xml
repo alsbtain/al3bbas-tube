@@ -40,7 +40,9 @@
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-splashscreen" />
 
-	<plugin name="cordova-plugin-x-socialsharing" />	
+	<plugin name="cordova-plugin-x-socialsharing" />
+	<plugin name="https://github.com/AubreyHewes/cordova-background-audio.git" />
+	
 	<plugin name="https://github.com/phonegap-build/PushPlugin.git" />
 
     <icon src="icon.png" />
