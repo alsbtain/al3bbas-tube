@@ -41,7 +41,7 @@
     <plugin name="cordova-plugin-splashscreen" />
 
 	<plugin name="cordova-plugin-x-socialsharing" />
-	<plugin spec="https://github.com/phonegap-build/PushPlugin.git" />
+	<plugin spec="https://github.com/phonegap-build/PushPlugin.git#2.5.0" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"	gap:qualifier="ldpi" />
