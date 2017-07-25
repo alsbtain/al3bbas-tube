@@ -62,6 +62,7 @@ function onNotificationGCM(e) {
 		
 		case 'error':
 			//$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+			alert(e.msg);
 		break;
 		
 		default:
