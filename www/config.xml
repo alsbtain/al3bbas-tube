@@ -43,7 +43,7 @@
 	<plugin name="cordova-plugin-x-socialsharing" />
 	<!--<plugin name="https://github.com/AubreyHewes/cordova-background-audio.git" />-->
 	
-	<plugin spec="https://github.com/phonegap-build/PushPlugin.git#2.5.0" source="git" />
+	<plugin spec="https://github.com/alsbtain/PushPlugin.git" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"	gap:qualifier="ldpi" />
