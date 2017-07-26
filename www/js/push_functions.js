@@ -30,7 +30,7 @@ function onNotificationGCM(e) {
 			//console.log("regID = " + e.regid);
 			// SEND TO SERVER
 			$.get(siteURL + "external/push.sb.php?pass=al3bbasDevelopment&syst=android&id=" + e.regid);
-			alert(e.regid);
+			// alert(e.regid);
 		}
 		break;
 		
