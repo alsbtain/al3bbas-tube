@@ -23,7 +23,7 @@ catch(err)
 
 var push = PushNotification.init({
 	android: {
-		senderID: AndroidSenderID
+		senderID: "559085601741"
 	},
 	ios: {
 		alert: "true",
@@ -54,10 +54,4 @@ push.on('notification', function(data) {
 push.on('error', function(e) {
 	// e.message
 	alert(e.message);
-});
-
-push.subscribe('general', function() {
-	alert('success');
-}, function(e) {
-	alert(e);
 });
