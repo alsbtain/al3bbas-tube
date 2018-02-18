@@ -23,7 +23,7 @@ catch(err)
 
 var push = PushNotification.init({
 	android: {
-		senderID: "559085601741"
+		senderID: AndroidSenderID
 	},
 	ios: {
 		alert: "true",
