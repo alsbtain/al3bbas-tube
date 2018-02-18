@@ -1,4 +1,4 @@
-// handle APNS notifications for iOS
+/* // handle APNS notifications for iOS
 function onNotificationAPN(e) {
 	if (e.alert) {
 		 //$("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
@@ -85,4 +85,4 @@ function successHandler (result) {
 
 function errorHandler (error) {
 	//$("#app-status-ul").append('<li>error:'+ error +'</li>');
-}
+} */

@@ -1,4 +1,4 @@
-
+/* 
 var PushNotification = function() {
 };
 
@@ -63,3 +63,4 @@ if(!window.plugins) {
 if (!window.plugins.pushNotification) {
 	window.plugins.pushNotification = new PushNotification();
 }
+*/
