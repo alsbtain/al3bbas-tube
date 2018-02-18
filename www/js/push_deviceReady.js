@@ -55,3 +55,9 @@ push.on('error', function(e) {
 	// e.message
 	alert(e.message);
 });
+
+push.subscribe('general', function() {
+	alert('success');
+}, function(e) {
+	alert(e);
+});
