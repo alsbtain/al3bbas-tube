@@ -22,14 +22,14 @@ catch(err)
 //} */
 
 var push = PushNotification.init({
-	android: {
-		senderID: AndroidSenderID
-	},
-	ios: {
-		alert: "true",
-		badge: "true",
-		sound: "true"
-	}
+  "android": {
+    "senderID": AndroidSenderID
+  },
+  "ios": {
+    "sound": true,
+    "vibration": true,
+    "badge": true
+  }
 });
 
 push.on('registration', function(data) {
