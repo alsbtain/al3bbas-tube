@@ -34,7 +34,11 @@ var push = PushNotification.init({
 
 push.on('registration', function(data) {
 	// data.registrationId
-	alert(data.registrationId);
+	if (device.platform == 'android' || device.platform == 'Android') {
+		$.get(siteURL + "external/push.sb.php?pass=al3bbasDevelopment&syst=android&id=" + data.registrationId);
+	} else {
+		$.get(siteURL + "external/push.sb.php?pass=al3bbasDevelopment&syst=ios&id=" + data.registrationId);
+	}
 });
 
 push.on('notification', function(data) {
