@@ -22,6 +22,17 @@ catch(err)
 //} */
 
 var push = PushNotification.init({
+	android: {
+		senderID: AndroidSenderID
+	},
+	ios: {
+		alert: "true",
+		badge: "true",
+		sound: "true"
+	}
+});
+
+var push = PushNotification.init({
   "android": {
     "senderID": AndroidSenderID
   },
