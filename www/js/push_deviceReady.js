@@ -23,7 +23,8 @@ catch(err)
 
 var push = PushNotification.init({
 	android: {
-		senderID: AndroidSenderID
+		senderID: AndroidSenderID,
+		icon: "ic_stat_icon"
 	},
 	ios: {
 		alert: "true",
@@ -32,22 +33,11 @@ var push = PushNotification.init({
 	}
 });
 
-var push = PushNotification.init({
-  "android": {
-    "senderID": AndroidSenderID
-  },
-  "ios": {
-    "sound": true,
-    "vibration": true,
-    "badge": true
-  }
-});
-
 push.on('registration', function(data) {
 	// data.registrationId
 	if (device.platform == 'android' || device.platform == 'Android') {
 		$.get(siteURL + "external/push.sb.php?pass=al3bbasDevelopment&syst=android&id=" + data.registrationId);
-		alert(data.registrationId);
+		//alert(data.registrationId);
 	} else {
 		$.get(siteURL + "external/push.sb.php?pass=al3bbasDevelopment&syst=ios&id=" + data.registrationId);
 	}
