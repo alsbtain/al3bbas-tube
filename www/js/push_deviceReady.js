@@ -24,7 +24,8 @@ catch(err)
 var push = PushNotification.init({
 	android: {
 		senderID: AndroidSenderID,
-		icon: "notification_icon"
+		icon: 'notification_icon',
+		iconColor: 'black'
 	},
 	ios: {
 		alert: "true",
