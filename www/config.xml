@@ -17,7 +17,6 @@
     </author>
 	
 	<preference name="phonegap-version" value="cli-7.1.0" />
-	<preference name="android-targetSdkVersion" value="20"/>
 
     <preference name="permissions"                value="none"/>
 
