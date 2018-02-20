@@ -101,7 +101,11 @@
     </platform>
 	
 	<platform name="android">
-		<resource-file src="notif.png" target="/res/android/drawable/notif.png" />
+		<resource-file src="res/drawable-mdpi/ic_stat_icon.png" target="/res/android/drawable-mdpi/ic_stat_icon.png" />
+		<resource-file src="res/drawable-hdpi/ic_stat_icon.png" target="/res/android/drawable-hdpi/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xhdpi/ic_stat_icon.png" target="/res/android/drawable-xhdpi/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xxhdpi/ic_stat_icon.png" target="/res/android/drawable-xxhdpi/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xxxhdpi/ic_stat_icon.png" target="/res/android/drawable-xxxhdpi/ic_stat_icon.png" />
 	</platform>
 
 </widget>
