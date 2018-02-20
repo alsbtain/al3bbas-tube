@@ -100,6 +100,8 @@
         <allow-intent href="itms-apps:*" />
     </platform>
 	
-	<resource-file src="notif.png" target="/res/android/drawable/notif.png" />
+	<platform name="android">
+		<resource-file src="notif.png" target="/res/android/drawable/notif.png" />
+	</platform>
 
 </widget>
