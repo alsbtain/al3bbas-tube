@@ -101,6 +101,16 @@
     </platform>
 	
 	<platform name="android">
+		<resource-file src="res/drawable-mdpi/ic_stat_icon.png" target="/res/android/drawable-mdpi-v11/ic_stat_icon.png" />
+		<resource-file src="res/drawable-hdpi/ic_stat_icon.png" target="/res/android/drawable-hdpi-v11/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xhdpi/ic_stat_icon.png" target="/res/android/drawable-xhdpi-v11/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xxhdpi/ic_stat_icon.png" target="/res/android/drawable-xxhdpi-v11/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xxxhdpi/ic_stat_icon.png" target="/res/android/drawable-xxxhdpi-v11/ic_stat_icon.png" />
+		<resource-file src="res/drawable-mdpi/ic_stat_icon.png" target="/res/android/drawable-mdpi-v4/ic_stat_icon.png" />
+		<resource-file src="res/drawable-hdpi/ic_stat_icon.png" target="/res/android/drawable-hdpi-v4/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xhdpi/ic_stat_icon.png" target="/res/android/drawable-xhdpi-v4/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xxhdpi/ic_stat_icon.png" target="/res/android/drawable-xxhdpi-v4/ic_stat_icon.png" />
+		<resource-file src="res/drawable-xxxhdpi/ic_stat_icon.png" target="/res/android/drawable-xxxhdpi-v4/ic_stat_icon.png" />
 		<resource-file src="res/drawable-mdpi/ic_stat_icon.png" target="/res/android/drawable-mdpi/ic_stat_icon.png" />
 		<resource-file src="res/drawable-hdpi/ic_stat_icon.png" target="/res/android/drawable-hdpi/ic_stat_icon.png" />
 		<resource-file src="res/drawable-xhdpi/ic_stat_icon.png" target="/res/android/drawable-xhdpi/ic_stat_icon.png" />
