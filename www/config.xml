@@ -44,7 +44,7 @@
 	<plugin name="phonegap-plugin-push" spec="1.9.0">
 		<param name="SENDER_ID" value="559085601741" />
 	</plugin>
-	<resource-file src="android/drawable/notif.png" target="res/android/drawable/notif.png" />
+	<resource-file src="notif.png" target="res/android/drawable/notif.png" />
 	
 	<!-- Development Only - To Get the Latest Versions of Plugins -->
 	<!-- <plugin spec="https://github.com/alsbtain/PushPlugin.git" /> -->
