@@ -2,7 +2,8 @@ var push = PushNotification.init({
 	android: {
 		senderID: AndroidSenderID,
 		icon: 'ic_stat_icon',
-		iconColor: 'teal'
+		iconColor: 'teal',
+		clearNotifications: false
 	},
 	ios: {
 		alert: "true",
@@ -28,7 +29,7 @@ push.on('notification', function(data) {
 	// data.sound,
 	// data.image,
 	// data.additionalData
-	alert(data.message);
+	navigator.notification.alert(data.message, undefined, 'رسالة', 'موافق');
 });
 
 push.on('error', function(e) {
