@@ -2,8 +2,7 @@ var push = PushNotification.init({
 	android: {
 		senderID: AndroidSenderID,
 		icon: 'ic_stat_icon',
-		iconColor: 'teal',
-		clearNotifications: false
+		iconColor: 'teal'
 	},
 	ios: {
 		alert: "true",
