@@ -9,7 +9,6 @@
   <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
   <script type="text/javascript" charset="utf-8" src="settings.js"></script>
   <script type="text/javascript" src="jwplayer/jwplayer.js"></script>
-  <script type="text/javascript" src="js/PushNotification.js"></script>
   
   <script type="text/javascript">	
 	function getUrlVars() {
@@ -98,12 +97,6 @@ function onDeviceReady() {
 		
 		}		
 	}
-	
-	// Push Notifications Functions
-	
-	$.getScript("js/push_functions.js", function(){});
-
-	// End of Push Notifications Functions
 	
 	document.addEventListener("deviceready", onDeviceReady, true);
 	
