@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "559085601741",
+    "firebase_url": "https://organic-depth-585.firebaseio.com",
+    "project_id": "organic-depth-585"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559085601741:android:eac21fdc89ed64f5",
+        "android_client_info": {
+          "package_name": "com.Alsbtain.Al3bbas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559085601741-v17np28rhp70udnti93elk09c5pnh8s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfq1yW0ukqbukOpuFYFr7S6i4twag4cXw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
