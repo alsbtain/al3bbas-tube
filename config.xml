@@ -3,8 +3,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.Alsbtain.Al3bbas"
-        version   = "2.0.3"
-		versionCode = "15">
+        version   = "2.0.4"
+		versionCode = "16">
 
     <name>حسينية العباس</name>
 
@@ -88,7 +88,7 @@
 	<icon src="www/res/icon/ios/152.png"				gap:platform="ios"		width="152" height="152" />
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>201</string>
+    <string>204</string>
     </gap:config-file>
 
     <access origin="*"/>
