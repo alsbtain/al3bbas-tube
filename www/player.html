@@ -172,9 +172,11 @@ if(mediaIDs.indexOf(';' + getUrlVars()["id"] + ';') > -1){
 function filetransfer(download_link, fp) {
     var fileTransfer = new FileTransfer();
     // File download function with URL and local path
+	download_link = 'https://alsbtain.box.com/shared/static/45yandgagexn72vbo063s9q00xux1dcx.mp3';
     fileTransfer.download(download_link, fp,
         function(entry) {
             alert("download complete: " + entry.fullPath);
+			gotFile(entry.fullPath);
 			mediaID = getUrlVars()["id"];
 			localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
 			localStorage.setItem("mediaTitle" + mediaID, output_title);
@@ -190,6 +192,21 @@ function filetransfer(download_link, fp) {
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="theme/images/cross.png" /> حدث خطأ أثناء التحميل!';
         }
     );
+}
+
+function gotFile(fileEntry) {
+
+	fileEntry.file(function(file) {
+		var reader = new FileReader();
+
+		reader.onloadend = function(e) {
+			console.log("Text is: "+this.result);
+			document.querySelector("#textArea").innerHTML = this.result;
+		}
+
+		reader.readAsText(file);
+	});
+
 }
 
 window.onerror = function(msg, url, linenumber) {
