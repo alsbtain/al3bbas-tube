@@ -138,9 +138,8 @@ if(mediaIDs.indexOf(';' + getUrlVars()["id"] + ';') > -1){
 
     function fileSystemSuccess(fileSystem) {
         var download_link = encodeURI(sbURL);
-        //fileName = download_link.substr(download_link.lastIndexOf('/') + 1); //Get filename of URL
-        filename = 'debug.mp3';
-		var directoryEntry = fileSystem.root; // to get root path of directory
+        fileName = download_link.substr(download_link.lastIndexOf('/') + 1); //Get filename of URL
+        var directoryEntry = fileSystem.root; // to get root path of directory
         directoryEntry.getDirectory(folderName, {
             create: true,
             exclusive: false
@@ -155,17 +154,20 @@ if(mediaIDs.indexOf(';' + getUrlVars()["id"] + ';') > -1){
 
     function onDirectorySuccess(parent) {
         // Directory created successfuly
+		alert("onDirectorySuccess");
     }
 
     function onDirectoryFail(error) {
         //Error while creating directory
         //alert("Unable to create new directory: " + error.code);
+		alert("onDirectoryFail");
 		document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="theme/images/cross.png" /> حدث خطأ أثناء التحميل!';
     }
 
     function fileSystemFail(evt) {
         //Unable to access file system
         //alert(evt.target.error.code);
+		alert("fileSystemFail");
 		document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="theme/images/cross.png" /> حدث خطأ أثناء التحميل!';
     }
 }}
@@ -188,6 +190,7 @@ function filetransfer(download_link, fp) {
         function(error) {
             //Download abort errors or download failed errors
             //alert("download error source " + error.source);
+			lert("error");
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="theme/images/cross.png" /> حدث خطأ أثناء التحميل!';
         }
     );
