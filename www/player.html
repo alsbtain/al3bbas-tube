@@ -174,7 +174,7 @@ function filetransfer(download_link, fp) {
     // File download function with URL and local path
     fileTransfer.download(download_link, fp,
         function(entry) {
-            //alert("download complete: " + entry.fullPath);
+            alert("download complete: " + entry.fullPath);
 			mediaID = getUrlVars()["id"];
 			localStorage.setItem("downloaded", mediaID + ';' + localStorage.getItem("downloaded"));
 			localStorage.setItem("mediaTitle" + mediaID, output_title);
