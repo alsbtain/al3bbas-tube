@@ -137,7 +137,8 @@ if(mediaIDs.indexOf(';' + getUrlVars()["id"] + ';') > -1){
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
 
     function fileSystemSuccess(fileSystem) {
-        var download_link = encodeURI(sbURL);
+        //var download_link = encodeURI(sbURL);
+		var download_link = sbURL;
         fileName = download_link.substr(download_link.lastIndexOf('/') + 1); //Get filename of URL
         var directoryEntry = fileSystem.root; // to get root path of directory
         directoryEntry.getDirectory(folderName, {
@@ -172,7 +173,7 @@ if(mediaIDs.indexOf(';' + getUrlVars()["id"] + ';') > -1){
 function filetransfer(download_link, fp) {
     var fileTransfer = new FileTransfer();
     // File download function with URL and local path
-	download_link = 'https://alsbtain.box.com/shared/static/45yandgagexn72vbo063s9q00xux1dcx.mp3';
+	//download_link = 'https://alsbtain.box.com/shared/static/45yandgagexn72vbo063s9q00xux1dcx.mp3';
     fileTransfer.download(download_link, fp,
         function(entry) {
             alert("download complete: " + entry.fullPath);
@@ -192,21 +193,6 @@ function filetransfer(download_link, fp) {
 			document.getElementById('downloadMSG').innerHTML = '<img class="noborder" src="theme/images/cross.png" /> حدث خطأ أثناء التحميل!';
         }
     );
-}
-
-function gotFile(fileEntry) {
-
-	fileEntry.file(function(file) {
-		var reader = new FileReader();
-
-		reader.onloadend = function(e) {
-			console.log("Text is: "+this.result);
-			document.querySelector("#textArea").innerHTML = this.result;
-		}
-
-		reader.readAsText(file);
-	});
-
 }
 
 window.onerror = function(msg, url, linenumber) {
